@@ -41,6 +41,9 @@ style: default
 check:
 	$(MAKE) -C .. check
 
+bcheck: default
+	java db61b.BasicTests_Row
+
 # 'make clean' will clean up stuff you can reconstruct.
 clean:
 	$(RM) *~ *.class sentinel

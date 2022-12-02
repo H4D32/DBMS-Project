@@ -29,6 +29,9 @@ default:
 check: default
 	$(MAKE) -C testing check
 
+bcheck: default
+	java db61b.BasicTests_Row
+
 style:
 	$(MAKE) -C $(PACKAGE) STYLEPROG=$(STYLEPROG) style
 
@@ -37,5 +40,3 @@ clean:
 	$(RM) *~ 
 	$(MAKE) -C $(PACKAGE) clean
 	$(MAKE) -C testing clean
-
-

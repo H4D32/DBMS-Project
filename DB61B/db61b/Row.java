@@ -45,12 +45,12 @@ class Row {
 
     /** Return my number of columns. */
     int size() {
-        return 0;  // REPLACE WITH SOLUTION
+        return _data.length;  // Solution attempt -Alae
     }
 
     /** Return the value of my Kth column.  Requires that 0 <= K < size(). */
     String get(int k) {
-        return null; // REPLACE WITH SOLUTION
+        return _data[k]; // Solution attempt -Alae
     }
 
     @Override

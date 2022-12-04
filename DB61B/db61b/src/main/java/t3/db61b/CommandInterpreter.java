@@ -6,15 +6,15 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
-package db61b;
+package t3.db61b;
 
 import java.io.PrintStream;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static db61b.Utils.*;
-import static db61b.Tokenizer.*;
+import static t3.db61b.Utils.*;
+import static t3.db61b.Tokenizer.*;
 
 /** An object that reads and interprets a sequence of commands from an
  *  input source.

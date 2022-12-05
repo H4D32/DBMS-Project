@@ -5,7 +5,7 @@
 
 // Comments that start with "//" are intended to be removed from your
 // solutions.
-package db61b;
+package t3.db61b;
 
 import java.util.Arrays;
 import java.util.List;
@@ -45,17 +45,32 @@ class Row {
 
     /** Return my number of columns. */
     int size() {
-        return 0;  // REPLACE WITH SOLUTION
+        return _data.length;  // Solution attempt -Alae
     }
 
     /** Return the value of my Kth column.  Requires that 0 <= K < size(). */
     String get(int k) {
-        return null; // REPLACE WITH SOLUTION
+        return _data[k]; // Solution attempt -Alae
     }
 
     @Override
     public boolean equals(Object obj) {
-        return false; // REPLACE WITH SOLUTION
+        if (this == obj) {    
+            return true;    
+        }
+        if (obj instanceof Row){
+            Row anotherRow = (Row) obj;
+            int n = this.size();
+            if (n == anotherRow.size()){
+                for (int i = 0; i < n; i++) {
+                    if (!(_data[i].equals(anotherRow.get(i)))) {
+                        return false;
+                    }
+                }
+                    return true;
+            }
+        }   
+        return false; // Solution attempt -Alae
     }
 
     /* NOTE: Whenever you override the .equals() method for a class, you

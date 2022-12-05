@@ -1,6 +1,6 @@
-package db61b;
+package t3.db61b;
 
-import static db61b.Utils.*;
+import static t3.db61b.Utils.*;
 
 /** A Column is effectively an index of a specific, named column
  *  in a list of Rows.  Given a sequence of [t0,...,tn] of Tables,

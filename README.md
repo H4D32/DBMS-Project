@@ -46,9 +46,9 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [x] Complete the printing of prompts
 
-- [ ] Build test cases
+- [x] Ran first Test 
 
-- [ ] Implement the Row class (except for the Row(List<Column> columns, Row... rows) constructor)
+- [x] Implement the Row class (except for the Row(List<Column> columns, Row... rows) constructor)
 
 - [ ] Implement the parts of the Table class: Create a new Table, Add a Row to it, and Print an entire Table.
 

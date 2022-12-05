@@ -1,4 +1,4 @@
-package db61b;
+package t3.db61b;
 
 import java.io.PrintStream;
 import java.util.regex.Matcher;
@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static db61b.Utils.*;
+import static t3.db61b.Utils.*;
 
 /** Represents a stream of db61b tokens read from a given Scanner.
  *  @author P. N. Hilfinger. */

@@ -30,7 +30,7 @@ SRCS := $(wildcard *.java)
 # As a convenience, you can compile a single Java file X.java in this directory
 # with 'make X.class'
 %.class: %.java
-	javac $(JFLAGS) -cp ..:$(CLASSPATH) $<
+	javac $(JFLAGS) -cp .. $<
 
 # First, and therefore default, target.
 default: sentinel
@@ -41,6 +41,9 @@ style: default
 check:
 	$(MAKE) -C .. check
 
+bcheck: default
+	java db61b.BasicTests_Row
+
 # 'make clean' will clean up stuff you can reconstruct.
 clean:
 	$(RM) *~ *.class sentinel
@@ -50,3 +53,4 @@ clean:
 sentinel: $(SRCS)
 	javac $(JFLAGS) -cp ..:$(CLASSPATH) $(SRCS)
 	touch sentinel
+	

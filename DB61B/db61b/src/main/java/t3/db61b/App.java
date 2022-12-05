@@ -1,11 +1,11 @@
-package db61b;
+package t3.db61b;
 
 import java.util.Scanner;
 
 /** The main program for db61b.
  *  @author P. N. Hilfinger
  */
-public class Main {
+public class App {
 
     /** Version designation for this program. */
     private static final String VERSION = "2.0";

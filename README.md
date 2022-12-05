@@ -38,4 +38,30 @@ After thorough discussion, our team made the choice and the specification inform
 
 ## Project Abstract
 
+This project involves writing a miniature relational database management system (DBMS) that stores tables of data, where a table consists of some number of labeled columns of information. Our system will include a very simple query language for extracting information from these tables. For the purposes of this project, we will deal only with very small databases, and therefore will not consider speed and efficiency at all.
+
+Basically, we will use the provided template implemented by Java. The overall implementation order is from part to whole, from simple to difficult, such as Row -> Table -> Database. The detailed implementation order is shown below as a checklist.
+
+## Project Checklist
+
+- [x] Complete the printing of prompts
+
+- [x] Ran first Test 
+
+- [x] Implement the Row class (except for the Row(List<Column> columns, Row... rows) constructor)
+
+- [ ] Implement the parts of the Table class: Create a new Table, Add a Row to it, and Print an entire Table.
+
+- [ ] Implement the Database class.
+
+- [ ] Implement insert and load.
+
+- [ ] Implement the kind of select that takes a single table and has no conditions.
+
+- [ ] Implement the Row(List<Column> columns, Row... rows) constructor.
+
+- [ ] Get single-table select with conditions to work.
+
+- [ ] Work on the two-table variety of select.
+
 <!-- TODO -->

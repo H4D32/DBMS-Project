@@ -20,18 +20,22 @@ import java.util.List;
 
 import static t3.db61b.Utils.*;
 
-/** A single table in a database.
- *  @author P. N. Hilfinger
+/**
+ * A single table in a database.
+ * 
+ * @author P. N. Hilfinger
  */
 class Table implements Iterable<Row> {
-    /** A new Table whose columns are given by COLUMNTITLES, which may
-     *  not contain dupliace names. */
+    /**
+     * A new Table whose columns are given by COLUMNTITLES, which may
+     * not contain dupliace names.
+     */
     Table(String[] columnTitles) {
         for (int i = columnTitles.length - 1; i >= 1; i -= 1) {
             for (int j = i - 1; j >= 0; j -= 1) {
                 if (columnTitles[i].equals(columnTitles[j])) {
                     throw error("duplicate column name: %s",
-                                columnTitles[i]);
+                            columnTitles[i]);
                 }
             }
         }
@@ -45,23 +49,25 @@ class Table implements Iterable<Row> {
 
     /** Return the number of columns in this table. */
     public int columns() {
-        return 0;  // REPLACE WITH SOLUTION
+        return 0; // REPLACE WITH SOLUTION
     }
 
-    /** Return the title of the Kth column.  Requires 0 <= K < columns(). */
+    /** Return the title of the Kth column. Requires 0 <= K < columns(). */
     public String getTitle(int k) {
-        return null;  // REPLACE WITH SOLUTION
+        return null; // REPLACE WITH SOLUTION
     }
 
-    /** Return the number of the column whose title is TITLE, or -1 if
-     *  there isn't one. */
+    /**
+     * Return the number of the column whose title is TITLE, or -1 if
+     * there isn't one.
+     */
     public int findColumn(String title) {
-        return -1;  // REPLACE WITH SOLUTION
+        return -1; // REPLACE WITH SOLUTION
     }
 
     /** Return the number of Rows in this table. */
     public int size() {
-        return 0;  // REPLACE WITH SOLUTION
+        return 0; // REPLACE WITH SOLUTION
     }
 
     /** Returns an iterator that returns my rows in an unspecfied order. */
@@ -70,14 +76,19 @@ class Table implements Iterable<Row> {
         return _rows.iterator();
     }
 
-    /** Add ROW to THIS if no equal row already exists.  Return true if anything
-     *  was added, false otherwise. */
+    /**
+     * Add ROW to THIS if no equal row already exists. Return true if anything
+     * was added, false otherwise.
+     */
     public boolean add(Row row) {
-        return false;   // REPLACE WITH SOLUTION
+        System.out.println("add new row" + row.get(0));
+        return false; // REPLACE WITH SOLUTION
     }
 
-    /** Read the contents of the file NAME.db, and return as a Table.
-     *  Format errors in the .db file cause a DBException. */
+    /**
+     * Read the contents of the file NAME.db, and return as a Table.
+     * Format errors in the .db file cause a DBException.
+     */
     static Table readTable(String name) {
         BufferedReader input;
         Table table;
@@ -91,6 +102,13 @@ class Table implements Iterable<Row> {
             }
             String[] columnNames = header.split(",");
             // FILL IN
+            table = new Table(columnNames);
+            String nextRow = input.readLine();
+            while (null != nextRow) {
+                String[] rowList = nextRow.split(",");
+                table.add(new Row(rowList));
+                nextRow = input.readLine();
+            }
         } catch (FileNotFoundException e) {
             throw error("could not find %s.db", name);
         } catch (IOException e) {
@@ -105,10 +123,12 @@ class Table implements Iterable<Row> {
             }
         }
         return table;
-    }
+    } // Solution attempt -Jiayu
 
-    /** Write the contents of TABLE into the file NAME.db. Any I/O errors
-     *  cause a DBException. */
+    /**
+     * Write the contents of TABLE into the file NAME.db. Any I/O errors
+     * cause a DBException.
+     */
     void writeTable(String name) {
         PrintStream output;
         output = null;
@@ -131,32 +151,38 @@ class Table implements Iterable<Row> {
         // FILL IN
     }
 
-    /** Return a new Table whose columns are COLUMNNAMES, selected from
-     *  rows of this table that satisfy CONDITIONS. */
+    /**
+     * Return a new Table whose columns are COLUMNNAMES, selected from
+     * rows of this table that satisfy CONDITIONS.
+     */
     Table select(List<String> columnNames, List<Condition> conditions) {
         Table result = new Table(columnNames);
         // FILL IN
         return result;
     }
 
-    /** Return a new Table whose columns are COLUMNNAMES, selected
-     *  from pairs of rows from this table and from TABLE2 that match
-     *  on all columns with identical names and satisfy CONDITIONS. */
+    /**
+     * Return a new Table whose columns are COLUMNNAMES, selected
+     * from pairs of rows from this table and from TABLE2 that match
+     * on all columns with identical names and satisfy CONDITIONS.
+     */
     Table select(Table table2, List<String> columnNames,
-                 List<Condition> conditions) {
+            List<Condition> conditions) {
         Table result = new Table(columnNames);
         // FILL IN
         return result;
     }
 
-    /** Return true if the columns COMMON1 from ROW1 and COMMON2 from
-     *  ROW2 all have identical values.  Assumes that COMMON1 and
-     *  COMMON2 have the same number of elements and the same names,
-     *  that the columns in COMMON1 apply to this table, those in
-     *  COMMON2 to another, and that ROW1 and ROW2 come, respectively,
-     *  from those tables. */
+    /**
+     * Return true if the columns COMMON1 from ROW1 and COMMON2 from
+     * ROW2 all have identical values. Assumes that COMMON1 and
+     * COMMON2 have the same number of elements and the same names,
+     * that the columns in COMMON1 apply to this table, those in
+     * COMMON2 to another, and that ROW1 and ROW2 come, respectively,
+     * from those tables.
+     */
     private static boolean equijoin(List<Column> common1, List<Column> common2,
-                                    Row row1, Row row2) {
+            Row row1, Row row2) {
         return true; // REPLACE WITH SOLUTION
     }
 
@@ -164,4 +190,3 @@ class Table implements Iterable<Row> {
     private HashSet<Row> _rows = new HashSet<>();
     // FILL IN
 }
-

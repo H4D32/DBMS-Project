@@ -30,12 +30,14 @@ class Table implements Iterable<Row> {
         for (int i = columnTitles.length - 1; i >= 1; i -= 1) {
             for (int j = i - 1; j >= 0; j -= 1) {
                 if (columnTitles[i].equals(columnTitles[j])) {
-                    throw error("duplicate column name: %s",
-                                columnTitles[i]);
+                    throw error("duplicate column name: %s", columnTitles[i]);
                 }
             }
         }
-        // FILL IN
+        this.titles = new String[columnTitles.length];
+        for (int i = 0; i < columnTitles.length; i++) {
+            this.titles[i] = columnTitles[i];
+        }
     }
 
     /** A new Table whose columns are give by COLUMNTITLES. */
@@ -45,23 +47,26 @@ class Table implements Iterable<Row> {
 
     /** Return the number of columns in this table. */
     public int columns() {
-        return 0;  // REPLACE WITH SOLUTION
+        return this.titles.length;
     }
 
     /** Return the title of the Kth column.  Requires 0 <= K < columns(). */
     public String getTitle(int k) {
-        return null;  // REPLACE WITH SOLUTION
+        return this.titles[k];
     }
 
     /** Return the number of the column whose title is TITLE, or -1 if
      *  there isn't one. */
     public int findColumn(String title) {
-        return -1;  // REPLACE WITH SOLUTION
+        for (int i = 0; i < this.columns(); i++) {
+            if (this.titles[i] == title) return i;
+        }
+        return -1;
     }
 
     /** Return the number of Rows in this table. */
     public int size() {
-        return 0;  // REPLACE WITH SOLUTION
+        return _rows.size();
     }
 
     /** Returns an iterator that returns my rows in an unspecfied order. */
@@ -73,7 +78,9 @@ class Table implements Iterable<Row> {
     /** Add ROW to THIS if no equal row already exists.  Return true if anything
      *  was added, false otherwise. */
     public boolean add(Row row) {
-        return false;   // REPLACE WITH SOLUTION
+        if (_rows.contains(row)) return false;
+        _rows.add(row);
+        return true;
     }
 
     /** Read the contents of the file NAME.db, and return as a Table.
@@ -90,7 +97,13 @@ class Table implements Iterable<Row> {
                 throw error("missing header in DB file");
             }
             String[] columnNames = header.split(",");
-            // FILL IN
+            table = new Table(columnNames);
+            String line;
+            String[] data;
+            while ((line = input.readLine()) != null) {
+                data = line.split(",");
+                table.add(new Row(data));
+            }
         } catch (FileNotFoundException e) {
             throw error("could not find %s.db", name);
         } catch (IOException e) {
@@ -116,7 +129,17 @@ class Table implements Iterable<Row> {
             String sep;
             sep = "";
             output = new PrintStream(name + ".db");
-            // FILL THIS IN
+            sep = String.join(",", this.titles);
+            output.println(sep);
+            for (Row r : _rows) {
+                for (int i = 0; i < this.columns() - 1; i += 1) {
+                    sep += r.get(i);
+                    sep += ",";
+                }
+                sep += r.get(this.columns() - 1);
+                output.println(sep);
+                sep = "";
+            }
         } catch (IOException e) {
             throw error("trouble writing to %s.db", name);
         } finally {
@@ -128,7 +151,14 @@ class Table implements Iterable<Row> {
 
     /** Print my contents on the standard output. */
     void print() {
-        // FILL IN
+        for (String title: this.titles) System.out.print(title + "\t");
+        System.out.print("\n");
+        for (Row row: this._rows) {
+            for (int i = 0; i < this.columns(); i++) {
+                System.out.print(row.get(i) + "\t");
+            }
+            System.out.print("\n");
+        }
     }
 
     /** Return a new Table whose columns are COLUMNNAMES, selected from
@@ -162,6 +192,7 @@ class Table implements Iterable<Row> {
 
     /** My rows. */
     private HashSet<Row> _rows = new HashSet<>();
-    // FILL IN
+    private String[] titles;
 }
+
 

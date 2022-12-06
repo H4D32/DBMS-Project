@@ -20,12 +20,16 @@ import java.util.List;
 
 import static t3.db61b.Utils.*;
 
-/** A single table in a database.
- *  @author P. N. Hilfinger
+/**
+ * A single table in a database.
+ * 
+ * @author P. N. Hilfinger
  */
 class Table implements Iterable<Row> {
-    /** A new Table whose columns are given by COLUMNTITLES, which may
-     *  not contain dupliace names. */
+    /**
+     * A new Table whose columns are given by COLUMNTITLES, which may
+     * not contain dupliace names.
+     */
     Table(String[] columnTitles) {
         for (int i = columnTitles.length - 1; i >= 1; i -= 1) {
             for (int j = i - 1; j >= 0; j -= 1) {
@@ -50,13 +54,15 @@ class Table implements Iterable<Row> {
         return this.titles.length;
     }
 
-    /** Return the title of the Kth column.  Requires 0 <= K < columns(). */
+    /** Return the title of the Kth column. Requires 0 <= K < columns(). */
     public String getTitle(int k) {
         return this.titles[k];
     }
 
-    /** Return the number of the column whose title is TITLE, or -1 if
-     *  there isn't one. */
+    /**
+     * Return the number of the column whose title is TITLE, or -1 if
+     * there isn't one.
+     */
     public int findColumn(String title) {
         for (int i = 0; i < this.columns(); i++) {
             if (this.titles[i] == title) return i;
@@ -75,16 +81,20 @@ class Table implements Iterable<Row> {
         return _rows.iterator();
     }
 
-    /** Add ROW to THIS if no equal row already exists.  Return true if anything
-     *  was added, false otherwise. */
+    /**
+     * Add ROW to THIS if no equal row already exists. Return true if anything
+     * was added, false otherwise.
+     */
     public boolean add(Row row) {
         if (_rows.contains(row)) return false;
         _rows.add(row);
         return true;
     }
 
-    /** Read the contents of the file NAME.db, and return as a Table.
-     *  Format errors in the .db file cause a DBException. */
+    /**
+     * Read the contents of the file NAME.db, and return as a Table.
+     * Format errors in the .db file cause a DBException.
+     */
     static Table readTable(String name) {
         BufferedReader input;
         Table table;
@@ -118,10 +128,12 @@ class Table implements Iterable<Row> {
             }
         }
         return table;
-    }
+    } // Solution attempt -Jiayu
 
-    /** Write the contents of TABLE into the file NAME.db. Any I/O errors
-     *  cause a DBException. */
+    /**
+     * Write the contents of TABLE into the file NAME.db. Any I/O errors
+     * cause a DBException.
+     */
     void writeTable(String name) {
         PrintStream output;
         output = null;
@@ -161,32 +173,38 @@ class Table implements Iterable<Row> {
         }
     }
 
-    /** Return a new Table whose columns are COLUMNNAMES, selected from
-     *  rows of this table that satisfy CONDITIONS. */
+    /**
+     * Return a new Table whose columns are COLUMNNAMES, selected from
+     * rows of this table that satisfy CONDITIONS.
+     */
     Table select(List<String> columnNames, List<Condition> conditions) {
         Table result = new Table(columnNames);
         // FILL IN
         return result;
     }
 
-    /** Return a new Table whose columns are COLUMNNAMES, selected
-     *  from pairs of rows from this table and from TABLE2 that match
-     *  on all columns with identical names and satisfy CONDITIONS. */
+    /**
+     * Return a new Table whose columns are COLUMNNAMES, selected
+     * from pairs of rows from this table and from TABLE2 that match
+     * on all columns with identical names and satisfy CONDITIONS.
+     */
     Table select(Table table2, List<String> columnNames,
-                 List<Condition> conditions) {
+            List<Condition> conditions) {
         Table result = new Table(columnNames);
         // FILL IN
         return result;
     }
 
-    /** Return true if the columns COMMON1 from ROW1 and COMMON2 from
-     *  ROW2 all have identical values.  Assumes that COMMON1 and
-     *  COMMON2 have the same number of elements and the same names,
-     *  that the columns in COMMON1 apply to this table, those in
-     *  COMMON2 to another, and that ROW1 and ROW2 come, respectively,
-     *  from those tables. */
+    /**
+     * Return true if the columns COMMON1 from ROW1 and COMMON2 from
+     * ROW2 all have identical values. Assumes that COMMON1 and
+     * COMMON2 have the same number of elements and the same names,
+     * that the columns in COMMON1 apply to this table, those in
+     * COMMON2 to another, and that ROW1 and ROW2 come, respectively,
+     * from those tables.
+     */
     private static boolean equijoin(List<Column> common1, List<Column> common2,
-                                    Row row1, Row row2) {
+            Row row1, Row row2) {
         return true; // REPLACE WITH SOLUTION
     }
 
@@ -194,5 +212,4 @@ class Table implements Iterable<Row> {
     private HashSet<Row> _rows = new HashSet<>();
     private String[] titles;
 }
-
 

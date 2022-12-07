@@ -7,24 +7,33 @@
 // solutions.
 package t3.db61b;
 
+import java.util.HashMap;
+
 // FILL IN (WITH IMPORTS)?
 
-/** A collection of Tables, indexed by name.
- *  @author */
+/**
+ * A collection of Tables, indexed by name.
+ * 
+ * @author
+ */
 class Database {
     /** An empty database. */
     public Database() {
         // FILL IN
     }
 
-    /** Return the Table whose name is NAME stored in this database, or null
-     *  if there is no such table. */
+    /**
+     * Return the Table whose name is NAME stored in this database, or null
+     * if there is no such table.
+     */
     public Table get(String name) {
-        return null;             // REPLACE WITH SOLUTION
+        return null; // REPLACE WITH SOLUTION
     }
 
-    /** Set or replace the table named NAME in THIS to TABLE.  TABLE and
-     *  NAME must not be null, and NAME must be a valid name for a table. */
+    /**
+     * Set or replace the table named NAME in THIS to TABLE. TABLE and
+     * NAME must not be null, and NAME must be a valid name for a table.
+     */
     public void put(String name, Table table) {
         if (name == null || table == null) {
             throw new IllegalArgumentException("null argument");
@@ -33,4 +42,5 @@ class Database {
     }
 
     // FILL IN?
+    private HashMap<String, Table> _database = new HashMap<>();
 }

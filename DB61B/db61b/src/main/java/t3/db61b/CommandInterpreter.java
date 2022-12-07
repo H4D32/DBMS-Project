@@ -12,9 +12,9 @@ import java.io.PrintStream;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 import static t3.db61b.Utils.*;
-import static t3.db61b.Tokenizer.*;
 
 /** An object that reads and interprets a sequence of commands from an
  *  input source.
@@ -166,7 +166,7 @@ class CommandInterpreter {
         _input.next("table");
         String name = name();
         Table table = tableDefinition();
-        // FILL IN CODE TO EXECUTE THE STATEMENT
+        _database.put(name,table);
         _input.next(";");
     }
 
@@ -198,7 +198,12 @@ class CommandInterpreter {
 
     /** Parse and execute a load statement from the token stream. */
     void loadStatement() {
-        // FILL THIS IN
+        _input.next("load");
+        String LoadName = name();
+        Table LoadTable = Table.readTable(LoadName);
+        _database.put(LoadName, LoadTable);
+        System.out.println("Loaded"+LoadName+".db");
+        _input.next(";");
     }
 
     /** Parse and execute a store statement from the token stream. */
@@ -206,19 +211,28 @@ class CommandInterpreter {
         _input.next("store");
         String name = _input.peek();
         Table table = tableName();
-        // FILL THIS IN
+        table.writeTable(name);
         System.out.printf("Stored %s.db%n", name);
         _input.next(";");
     }
 
     /** Parse and execute a print statement from the token stream. */
     void printStatement() {
-        // FILL THIS IN
+        _input.next("print");
+        String s = _input.peek();
+        Table GetTable = _database.get(s);
+        System.out.println("Contents of " + s + ":");
+        GetTable.print();
+        _input.next(";");
     }
 
     /** Parse and execute a select statement from the token stream. */
     void selectStatement() {
-        // FILL THIS IN
+        _input.next("select");
+        Table SelectTable = selectClause();
+        _input.next(";");
+        System.out.println("Search results:");
+        SelectTable.print();
     }
 
     /** Parse and execute a table definition, returning the specified
@@ -226,11 +240,14 @@ class CommandInterpreter {
     Table tableDefinition() {
         Table table;
         if (_input.nextIf("(")) {
-            // REPLACE WITH SOLUTION
-            table = null;
+            ArrayList<String> ColumeName = new ArrayList<String>();
+            while (_input.nextIf(",")){
+                ColumeName.add(columnName());
+            }
+            table = new Table(ColumeName);
         } else {
-            // REPLACE WITH SOLUTION
-            table = null;
+            _input.next("as");
+            table = selectClause();
         }
         return table;
     }
@@ -238,8 +255,16 @@ class CommandInterpreter {
     /** Parse and execute a select clause from the token stream, returning the
      *  resulting table. */
     Table selectClause() {
-        return null;         // REPLACE WITH SOLUTION
-
+        List<String> colTitles = new ArrayList<String>();
+        colTitles.add(columnName());
+        while (_input.nextIf(",")) {
+            colTitles.add(columnName());
+        }
+        _input.next("from");
+        Table table = tableName();
+        List<Condition> conList = conditionClause(table);
+        table = table.select(colTitles, conList);
+        return table;
     }
 
     /** Parse and return a valid name (identifier) from the token stream. */
@@ -276,13 +301,36 @@ class CommandInterpreter {
      *  token stream.  This denotes the conjunction (`and') zero
      *  or more Conditions. */
     ArrayList<Condition> conditionClause(Table... tables) {
-        return null;        // REPLACE WITH SOLUTION
+        ArrayList<Condition> conList = new ArrayList<Condition>();
+        if (_input.nextIf("where")) {
+            Condition condi = condition(tables);
+            conList.add(condi);
+            while (_input.nextIf("and")) {
+                Condition condi2 = condition(tables);
+                conList.add(condi2);
+            }
+            return conList;
+        } else {
+            return conList;
+        }
     }
 
     /** Parse and return a Condition that applies to TABLES from the
      *  token stream. */
     Condition condition(Table... tables) {
-        return null;        // REPLACE WITH SOLUTION
+        String colTitle = columnName();
+        String relate = _input.next(Tokenizer.RELATION);
+        Column coll = new Column(colTitle, tables);
+        if (_input.nextIs(Tokenizer.LITERAL)) {
+            String report = literal();
+            Condition condi = new Condition(coll, relate, report);
+            return condi;
+        } else {
+            String colTitle2 = columnName();
+            Column report = new Column(colTitle2, tables);
+            Condition condi = new Condition(coll, relate, report);
+            return condi;
+        }
     }
 
     /** Advance the input past the next semicolon. */

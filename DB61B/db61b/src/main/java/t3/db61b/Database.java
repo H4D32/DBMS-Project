@@ -7,9 +7,7 @@
 // solutions.
 package t3.db61b;
 
-import java.util.HashMap;
-
-// FILL IN (WITH IMPORTS)?
+import java.util.HashMap; // Solution attempt -Chen Dekun
 
 /**
  * A collection of Tables, indexed by name.
@@ -41,6 +39,5 @@ class Database {
         // FILL IN
     }
 
-    // FILL IN?
-    private HashMap<String, Table> _database = new HashMap<>();
+    private HashMap<String, Table> _database; // Solution attempt -Chen Dekun
 }

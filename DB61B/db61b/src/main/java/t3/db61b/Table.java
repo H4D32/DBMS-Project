@@ -149,6 +149,17 @@ class Table implements Iterable<Row> {
     /** Print my contents on the standard output. */
     void print() {
         // FILL IN
+        System.out.println(this);
+        int columnNum = this.columns();
+        Iterator<Row> it = this.iterator();
+        Row next = it.next();
+        while (null != next) {
+            for (int i = 0; i < columnNum; i++) {
+                System.out.print(next.get(i) + ' ');
+            }
+            System.out.println();
+            next = it.next();
+        }
     }
 
     /**

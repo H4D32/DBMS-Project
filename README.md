@@ -16,14 +16,14 @@ Our team consists of the following members, listed in the table below (the team 
 
 <!-- change the info below to be the real case -->
 
-| Student ID | Student Name | GitHub Account (in Email) |
-| ---------- | ------------ | ------------------------- |
-| 120090336   | 陈德坤🚩    | 120090336@link.cuhk.edu.cn |
-| 120090747   | 陈清源    | christoph.chen@foxmail.com<br>120090747@link.cuhk.edu.cn   |
-| 120090675   | 黎鸣     | 120090675@link.cuhk.edu.cn     |
-| 119010531 |Nasr Alae-eddine| 119010531@link.cuhk.edu.cn|
-| 120010027  | 张家宇    | 120010027@link.cuhk.edu.cn     |
-| 118010408   | 张昊旻  | 118010408@link.cuhk.edu.cn     |
+| Student ID | Student Name | GitHub Account (in Email) | GitHub Username |
+| ---------- | ------------ | ------------------------- | ------------------------- |
+| 120090336   | 陈德坤🚩    | 120090336@link.cuhk.edu.cn | |
+| 120090747   | 陈清源    | christoph.chen@foxmail.com<br>120090747@link.cuhk.edu.cn   ||
+| 120090675   | 黎鸣     | 120090675@link.cuhk.edu.cn     | |
+| 119010531 |Nasr Alae-eddine| 119010531@link.cuhk.edu.cn| H4D32 |
+| 120010027  | 张家宇    | 120010027@link.cuhk.edu.cn     | |
+| 118010408   | 张昊旻  | 118010408@link.cuhk.edu.cn     | |
 
 ## Project Specification
 

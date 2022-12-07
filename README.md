@@ -52,7 +52,7 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [x] Implement the parts of the Table class: Create a new Table, Add a Row to it, and Print an entire Table.
 
-- [ ] Implement the Database class.
+- [x] Implement the Database class.
 
 - [ ] Implement insert and load.
 

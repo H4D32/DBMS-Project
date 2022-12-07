@@ -208,7 +208,7 @@ class Table implements Iterable<Row> {
      * COMMON2 to another, and that ROW1 and ROW2 come, respectively,
      * from those tables.
      */
-    private static boolean equijoin(List<Column> common1, List<Column> common2,
+    public static boolean equijoin(List<Column> common1, List<Column> common2,
             Row row1, Row row2) {
         List<String> data1 = new ArrayList<String>(), data2 = new ArrayList<String>();
         for (int i = 0; i < common1.size(); i++) {

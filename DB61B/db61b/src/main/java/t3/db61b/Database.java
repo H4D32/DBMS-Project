@@ -17,7 +17,7 @@ import java.util.HashMap; // Solution attempt -Chen Dekun
 class Database {
     /** An empty database. */
     public Database() {
-        // FILL IN
+        _database = new HashMap<String, Table>(); // Solution attempt -Chen Dekun
     }
 
     /**
@@ -25,7 +25,10 @@ class Database {
      * if there is no such table.
      */
     public Table get(String name) {
-        return null; // REPLACE WITH SOLUTION
+        if (_database.containsKey(name)) { // Solution attempt -Chen Dekun
+            return _database.get(name);
+        }
+        return null;
     }
 
     /**
@@ -36,7 +39,8 @@ class Database {
         if (name == null || table == null) {
             throw new IllegalArgumentException("null argument");
         }
-        // FILL IN
+        // HashMap "put" function can deal with both Set and Replace
+        _database.put(name, table); // Solution attempt -Chen Dekun
     }
 
     private HashMap<String, Table> _database; // Solution attempt -Chen Dekun

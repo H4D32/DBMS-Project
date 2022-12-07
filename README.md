@@ -19,7 +19,7 @@ Our team consists of the following members, listed in the table below (the team 
 | Student ID | Student Name | GitHub Account (in Email) | GitHub Username |
 | ---------- | ------------ | ------------------------- | ------------------------- |
 | 120090336   | 陈德坤🚩    | 1143863630@qq.com<br>120090336@link.cuhk.edu.cn | salixc |
-| 120090747   | 陈清源    | christoph.chen@foxmail.com<br>120090747@link.cuhk.edu.cn   ||
+| 120090747   | 陈清源    | christoph.chen@foxmail.com<br>120090747@link.cuhk.edu.cn   |Christoph-UGameGerm|
 | 120090675   | 黎鸣     | 120090675@link.cuhk.edu.cn     | |
 | 119010531 |Nasr Alae-eddine| alaeeddinenasr@gmail.com<br>119010531@link.cuhk.edu.cn| H4D32 |
 | 120010027  | 张家宇    | 120010027@link.cuhk.edu.cn     | JJY-jy233 |
@@ -60,7 +60,7 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [ ] 8. Implement the kind of select that takes a single table and has no conditions.
 
-- [ ] 9. Implement the Row(List<Column> columns, Row... rows) constructor.
+- [x] 9. Implement the Row(List<Column> columns, Row... rows) constructor.
 
 - [ ] 10. Get single-table select with conditions to work.
 

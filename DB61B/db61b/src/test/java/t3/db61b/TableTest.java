@@ -1,6 +1,9 @@
 package t3.db61b;
 
 import org.junit.Test;
+
+import javafx.scene.control.Tab;
+
 import static org.junit.Assert.*;
 
 public class TableTest {
@@ -8,5 +11,10 @@ public class TableTest {
     public void testReadTable() {
         Table test = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\enrolled");
         // remember to change path
+    }
+
+    public void testPrint() {
+        Table test = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\enrolled");
+        test.print();
     }
 }

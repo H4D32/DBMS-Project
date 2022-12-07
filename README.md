@@ -54,7 +54,7 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [ ] Implement the Database class.
 
-- [ ] Implement insert and load.
+- [x] Implement insert and load.
 
 - [ ] Implement the kind of select that takes a single table and has no conditions.
 

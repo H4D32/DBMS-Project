@@ -3,6 +3,9 @@ package t3.db61b;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+import java.util.List;
+import java.util.ArrayList;
+
 /**
  * Unit test for simple App.
  */
@@ -69,5 +72,29 @@ public class TableTest {
         table.add(new Row(new String[] { "Test", "Add", "Success" }));
         table.add(new Row(new String[] { "Print", "To", "Check" }));
         table.print();
+    }
+
+    @Test
+    public void Test_equijoin() {
+        table.add(new Row(new String[] { "Alex", "Bob", "SDS" }));
+        table.add(new Row(new String[] { "Charlie", "Diana", "SSE" }));
+
+        Table stu_id_table = new Table(new String[] { "Student", "ID" });
+        stu_id_table.add(new Row(new String[] { "Alex", "000001" }));
+        stu_id_table.add(new Row(new String[] { "Charlie", "000002" }));
+
+        table.print();
+        stu_id_table.print();
+
+        List<Column> column_stu_table = new ArrayList<Column>();
+        List<Column> column_stu_idtable = new ArrayList<Column>();
+        column_stu_table.add(new Column("Student", table));
+        column_stu_idtable.add(new Column("Student", stu_id_table));
+        for (Row row_table : table) {
+            for (Row row_idtable : stu_id_table) {
+                if (Table.equijoin(column_stu_table, column_stu_idtable, row_table, row_idtable))
+                    System.out.println("equijoin True");
+            }
+        }
     }
 }

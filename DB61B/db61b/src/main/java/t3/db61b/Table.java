@@ -208,9 +208,16 @@ class Table implements Iterable<Row> {
      * COMMON2 to another, and that ROW1 and ROW2 come, respectively,
      * from those tables.
      */
-    private static boolean equijoin(List<Column> common1, List<Column> common2,
+    public static boolean equijoin(List<Column> common1, List<Column> common2,
             Row row1, Row row2) {
-        return true; // REPLACE WITH SOLUTION
+        List<String> data1 = new ArrayList<String>(), data2 = new ArrayList<String>();
+        for (int i = 0; i < common1.size(); i++) {
+            data1.add(common1.get(i).getFrom(row1));
+            data2.add(common2.get(i).getFrom(row2));
+        }
+        if (!data1.containsAll(data2) || !data2.containsAll(data1))
+            return false;
+        return true;
     }
 
     /** My rows. */

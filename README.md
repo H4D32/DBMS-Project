@@ -54,7 +54,7 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [x] 5. Implement the Database class.
   
-- [ ] 6. Implement the Condition class.
+- [x] 6. Implement the Condition class.
 
 - [x] 7. Implement insert and load.
 

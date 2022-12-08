@@ -56,7 +56,7 @@ public class TableTest {
 
     @Test
     public void Test_findColumn() {
-        Table t1 = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\students");
+        Table t1 = Table.readTable("PATH\\students"); //write your absolute path here
         assertEquals(-1, t1.findColumn("Mentor"));
         assertEquals(-1, t1.findColumn("School"));
         assertEquals(5, t1.findColumn("Major"));
@@ -79,7 +79,7 @@ public class TableTest {
 
     @Test
     public void Test_select() {
-        Table t = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\students");
+        Table t = Table.readTable("PATH\\students"); //write your absolute path here
         List<String> select = new LinkedList<>();
         select.add("Major");
         select.add("SID");
@@ -114,4 +114,6 @@ public class TableTest {
             }
         }
     }
+
+
 }

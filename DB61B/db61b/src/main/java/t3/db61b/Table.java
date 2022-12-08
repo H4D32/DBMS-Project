@@ -18,8 +18,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import javafx.scene.control.Tab;
-
 import static t3.db61b.Utils.*;
 
 /**

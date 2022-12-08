@@ -18,7 +18,6 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
-import javafx.scene.control.Tab;
 
 import static t3.db61b.Utils.*;
 
@@ -107,7 +106,7 @@ class Table implements Iterable<Row> {
         input = null;
         table = null;
         try {
-            input = new BufferedReader(new FileReader(name + ".db"));
+            input = new BufferedReader(new FileReader(name + ".db")); //Add "DB61B/testing/" -Suggestion Alae
             String header = input.readLine();
             if (header == null) {
                 throw error("missing header in DB file");
@@ -201,20 +200,17 @@ class Table implements Iterable<Row> {
      * @return Table
      */
     Table select(List<String> columnNames) {
-        // System.out.println(columnNames.toString());
         Table result = new Table(columnNames);
-        List<Integer> columnNum = new ArrayList<>();
+        List<Integer> columnNum = new ArrayList<>();    
         for (String columnName : columnNames) {
-            // System.out.println(this.findColumn(columnName));
             columnNum.add(this.findColumn(columnName));
         }
-        // System.out.println(columnNum.toString());
         for (Row row : _rows) {
             String[] newRow = new String[columnNames.size()];
             for (int i = 0; i < columnNames.size(); i++) {
                 newRow[i] = row.get(columnNum.get(i));
             }
-            result.add(new Row(newRow));
+            result.add(new Row(newRow));    
         }
         return result;
     }
@@ -228,6 +224,47 @@ class Table implements Iterable<Row> {
             List<Condition> conditions) {
         Table result = new Table(columnNames);
         // FILL IN
+        return result;  
+    }
+
+    private static ArrayList<Column> namesToColumns(List<String> columnNames,
+    Table... tables) {
+        ArrayList<Column> Col = new ArrayList<>();
+        for (int i = 0; i < columnNames.size(); i++) {
+        Col.add(new Column(columnNames.get(i), tables));
+        }
+        return Col;
+    }
+
+        /**
+     * Return a new Table whose columns are COLUMNNAMES, selected
+     * from pairs of rows from this table and from TABLE2 that match
+     * on all columns with identical names with no conditions.
+     */
+    Table select(Table table2, List<String> columnNames) {
+        Table result = new Table(columnNames);
+        ArrayList<String> commonCols = new ArrayList<>();
+        for (int i = 0; i < this.columns(); i++) {
+            for (int j = 0; j < table2.columns(); j++) {
+                String thisCol = this.getTitle(i);
+                String col2 = table2.getTitle(j);
+                if (thisCol.equals(col2)) {
+                    commonCols.add(thisCol);
+                }
+            }
+        }
+        ArrayList<Column> common1 = namesToColumns(commonCols, this);
+        ArrayList<Column> common2 = namesToColumns(commonCols, table2); 
+        Table[] tables = {this, table2};
+        ArrayList<Column> columns = namesToColumns(columnNames, tables);
+        for (Row row1: this) {
+            for (Row row2: table2) {
+                if (equijoin(common1, common2, row1, row2)) {
+                    Row[] rows = {row1, row2};
+                    result.add(new Row(columns, rows));
+                }
+            }
+        }
         return result;
     }
 

@@ -18,6 +18,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
+import javafx.scene.control.Tab;
+
 import static t3.db61b.Utils.*;
 
 /**
@@ -41,7 +43,9 @@ class Table implements Iterable<Row> {
         this.titles = new String[columnTitles.length];
         for (int i = 0; i < columnTitles.length; i++) {
             this.titles[i] = columnTitles[i];
+            // System.out.println(this.titles[i]);
         }
+        // System.out.println(this.titles);
     }
 
     /** A new Table whose columns are give by COLUMNTITLES. */
@@ -110,6 +114,7 @@ class Table implements Iterable<Row> {
             }
             String[] columnNames = header.split(",");
             table = new Table(columnNames);
+            System.out.println("table._title" + table.titles.toString());
             String line;
             String[] data;
             while ((line = input.readLine()) != null) {
@@ -185,6 +190,32 @@ class Table implements Iterable<Row> {
         Table result = new Table(columnNames);
         // FILL IN
 
+        return result;
+    }
+
+    /**
+     * Return a new Table whose columns are COLUMNNAMES, selected from
+     * rows if this table with no conditions
+     * 
+     * @param columnNames
+     * @return Table
+     */
+    Table select(List<String> columnNames) {
+        // System.out.println(columnNames.toString());
+        Table result = new Table(columnNames);
+        List<Integer> columnNum = new ArrayList<>();
+        for (String columnName : columnNames) {
+            // System.out.println(this.findColumn(columnName));
+            columnNum.add(this.findColumn(columnName));
+        }
+        // System.out.println(columnNum.toString());
+        for (Row row : _rows) {
+            String[] newRow = new String[columnNames.size()];
+            for (int i = 0; i < columnNames.size(); i++) {
+                newRow[i] = row.get(columnNum.get(i));
+            }
+            result.add(new Row(newRow));
+        }
         return result;
     }
 

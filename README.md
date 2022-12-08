@@ -64,6 +64,6 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [ ] 10. Get single-table select with conditions to work.
 
-- [ ] 11. Work on the two-table variety of select.
+- [x] 11. Work on the two-table variety of select.
 
 <!-- TODO -->

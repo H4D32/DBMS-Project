@@ -16,14 +16,14 @@ Our team consists of the following members, listed in the table below (the team 
 
 <!-- change the info below to be the real case -->
 
-| Student ID | Student Name | GitHub Account (in Email) |
-| ---------- | ------------ | ------------------------- |
-| 120090336   | 陈德坤🚩    | 120090336@link.cuhk.edu.cn |
-| 120090747   | 陈清源    | 120090747@link.cuhk.edu.cn   |
-| 120090675   | 黎鸣     | 120090675@link.cuhk.edu.cn     |
-| 119010531 |Nasr Alae-eddine| 119010531@link.cuhk.edu.cn|
-| 120010027  | 张家宇    | 120010027@link.cuhk.edu.cn     |
-| 118010408   | 张昊旻  | 118010408@link.cuhk.edu.cn     |
+| Student ID | Student Name | GitHub Account (in Email) | GitHub Username |
+| ---------- | ------------ | ------------------------- | ------------------------- |
+| 120090336   | 陈德坤🚩    | 1143863630@qq.com<br>120090336@link.cuhk.edu.cn | salixc |
+| 120090747   | 陈清源    | christoph.chen@foxmail.com<br>120090747@link.cuhk.edu.cn   |Christoph-UGameGerm|
+| 120090675   | 黎鸣     | 120090675@link.cuhk.edu.cn     | |
+| 119010531 |Nasr Alae-eddine| alaeeddinenasr@gmail.com<br>119010531@link.cuhk.edu.cn| H4D32 |
+| 120010027  | 张家宇    | 120010027@link.cuhk.edu.cn     | JJY-jy233 |
+| 118010408   | 张昊旻  | 118010408@link.cuhk.edu.cn     | 118010408|
 
 ## Project Specification
 
@@ -44,26 +44,26 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 ## Project Checklist
 
-- [x] Complete the printing of prompts
+- [x] 1. Complete the printing of prompts
 
-- [x] Ran first Test 
+- [x] 2. Ran first Test 
 
-- [x] Implement the Row class (except for the Row(List<Column> columns, Row... rows) constructor)
+- [x] 3. Implement the Row class (except for the Row(List<Column> columns, Row... rows) constructor)
 
-- [x] Implement the parts of the Table class: Create a new Table, Add a Row to it, and Print an entire Table.
+- [x] 4. Implement the parts of the Table class: Create a new Table, Add a Row to it, and Print an entire Table.
 
-- [ ] Implement the Database class.
+- [x] 5. Implement the Database class.
   
-- [ ] Implement the Condition class.
+- [x] 6. Implement the Condition class.
 
-- [x] Implement insert and load.
+- [x] 7. Implement insert and load.
 
-- [ ] Implement the kind of select that takes a single table and has no conditions.
+- [ ] 8. Implement the kind of select that takes a single table and has no conditions.
 
-- [ ] Implement the Row(List<Column> columns, Row... rows) constructor.
+- [x] 9. Implement the Row(List<Column> columns, Row... rows) constructor.
 
-- [ ] Get single-table select with conditions to work.
+- [ ] 10. Get single-table select with conditions to work.
 
-- [ ] Work on the two-table variety of select.
+- [ ] 11. Work on the two-table variety of select.
 
 <!-- TODO -->

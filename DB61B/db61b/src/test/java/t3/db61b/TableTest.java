@@ -5,6 +5,7 @@ import static org.junit.Assert.*;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * Unit test for simple App.
@@ -55,8 +56,10 @@ public class TableTest {
 
     @Test
     public void Test_findColumn() {
-        assertEquals(1, table.findColumn("Mentor"));
-        assertEquals(2, table.findColumn("School"));
+        Table t1 = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\students");
+        assertEquals(-1, t1.findColumn("Mentor"));
+        assertEquals(-1, t1.findColumn("School"));
+        assertEquals(5, t1.findColumn("Major"));
     }
 
     @Test
@@ -72,6 +75,16 @@ public class TableTest {
         table.add(new Row(new String[] { "Test", "Add", "Success" }));
         table.add(new Row(new String[] { "Print", "To", "Check" }));
         table.print();
+    }
+
+    @Test
+    public void Test_select() {
+        Table t = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\students");
+        List<String> select = new LinkedList<>();
+        select.add("Major");
+        select.add("SID");
+        Table t1 = t.select(select);
+        t1.print();
     }
 
     @Test

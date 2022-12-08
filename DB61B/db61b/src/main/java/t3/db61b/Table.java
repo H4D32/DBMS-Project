@@ -199,14 +199,11 @@ class Table implements Iterable<Row> {
      * @return Table
      */
     Table select(List<String> columnNames) {
-        // System.out.println(columnNames.toString());
         Table result = new Table(columnNames);
         List<Integer> columnNum = new ArrayList<>();
         for (String columnName : columnNames) {
-            // System.out.println(this.findColumn(columnName));
             columnNum.add(this.findColumn(columnName));
         }
-        // System.out.println(columnNum.toString());
         for (Row row : _rows) {
             String[] newRow = new String[columnNames.size()];
             for (int i = 0; i < columnNames.size(); i++) {

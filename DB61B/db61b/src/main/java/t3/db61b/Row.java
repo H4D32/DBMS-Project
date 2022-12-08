@@ -47,10 +47,10 @@ class Row {
     Row(List<Column> columns, Row... rows) {
         String[] data = new String[columns.size()];
         for (Column column : columns) {
-            data[columns.indexOf(column)] = column.getFrom(rows[columns.indexOf(column)]);
+            data[columns.indexOf(column)] = column.getFrom(rows); //little change
         }
         _data = data;
-    }
+    }   
 
     /** Return my number of columns. */
     int size() {

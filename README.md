@@ -58,7 +58,7 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [x] 7. Implement insert and load.
 
-- [ ] 8. Implement the kind of select that takes a single table and has no conditions.
+- [x] 8. Implement the kind of select that takes a single table and has no conditions.
 
 - [x] 9. Implement the Row(List<Column> columns, Row... rows) constructor.
 

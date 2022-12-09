@@ -105,12 +105,8 @@ class Table implements Iterable<Row> {
         input = null;
         table = null;
         try {
-<<<<<<< HEAD
             input = new BufferedReader(new FileReader("DB61B\\testing\\" + name + ".db")); // Add "DB61B/testing/"
-            // -Suggestion Alae
-=======
-            input = new BufferedReader(new FileReader("DB61B\\testing\\" + name + ".db")); //Add "DB61B/testing/" -Suggestion Alae
->>>>>>> 3b6fd0441247c09c4b273143a5bb047699e6a62d
+                                                                                           // -Suggestion Alae
             String header = input.readLine();
             if (header == null) {
                 throw error("missing header in DB file");
@@ -216,7 +212,7 @@ class Table implements Iterable<Row> {
             }
             result.add(new Row(newRow));
         }
-        result.print();
+        // result.print();
         return result;
     }
 

@@ -113,7 +113,6 @@ class Table implements Iterable<Row> {
             }
             String[] columnNames = header.split(",");
             table = new Table(columnNames);
-            System.out.println("table._title" + table.titles.toString());
             String line;
             String[] data;
             while ((line = input.readLine()) != null) {
@@ -171,11 +170,11 @@ class Table implements Iterable<Row> {
     /** Print my contents on the standard output. */
     void print() {
         for (String title : this.titles)
-            System.out.print(title + "\t");
+            System.out.format("%-20s", title);
         System.out.print("\n");
         for (Row row : this._rows) {
             for (int i = 0; i < this.columns(); i++) {
-                System.out.print(row.get(i) + "\t");
+                System.out.format("%-20s", row.get(i));
             }
             System.out.print("\n");
         }

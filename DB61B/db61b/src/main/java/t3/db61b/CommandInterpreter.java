@@ -206,7 +206,7 @@ class CommandInterpreter {
         String LoadName = name();
         Table LoadTable = Table.readTable(LoadName);
         _database.put(LoadName, LoadTable);
-        System.out.println("Loaded " + LoadName + ".db");
+        System.out.println("Loaded" + LoadName + ".db");
         _input.next(";");
     }
 
@@ -296,13 +296,14 @@ class CommandInterpreter {
                 table = selecTable.select(colTitles);
 
                 // more than two table, but currently just up to 2 tables.
+                // -need further implementation(if select more than 2 tables together)
             } else {
                 Table selecTable = tabList.get(0);
                 Table selecTable2 = tabList.get(1);
                 table = selecTable.select(selecTable2, colTitles);
             }
 
-            // with cond
+            // with cond -need further implementation
         } else {
             table = table.select(colTitles, conList);
         }

@@ -206,7 +206,7 @@ class CommandInterpreter {
         String LoadName = name();
         Table LoadTable = Table.readTable(LoadName);
         _database.put(LoadName, LoadTable);
-        System.out.println("Loaded" + LoadName + ".db");
+        System.out.println("Loaded " + LoadName + ".db");
         _input.next(";");
     }
 
@@ -232,7 +232,8 @@ class CommandInterpreter {
     }
 
     /** Parse and execute a select statement from the token stream. */
-    //the select part has the bug that it just print the coltitle when select the whole column, need someone's help to fix it//
+    // the select part has the bug that it just print the coltitle when select the
+    // whole column, need someone's help to fix it//
     void selectStatement() {
         _input.next("select");
         Table SelectTable = selectClause();

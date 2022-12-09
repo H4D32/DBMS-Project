@@ -270,14 +270,39 @@ class CommandInterpreter {
             colTitles.add(columnName());
         }
         _input.next("from");
-        Table table = tableName();
-        List<Condition> conList = conditionClause(table);
-        // System.out.println("print condi");
-        // for (Condition condition : conList) {
-        // System.out.println(condition);
-        // }
+        List<Table> tabList = new ArrayList<>();
+
+        // initialize a new table to record the selection
+        Table table = new Table(colTitles);
+        tabList.add(tableName());
+        while (_input.nextIf(",")) {
+            tabList.add(tableName());
+        }
+        List<Condition> conList = new ArrayList<>();
+
+        // if next tokenizer is where, check condition.
+        if (_input.nextIs("where")) {
+            Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
+            conList = conditionClause(tabArray);
+        }
+        System.out.println(tabList.get(0));
+
+        // without cond
         if (conList.size() == 0) {
-            table = table.select(colTitles);
+
+            // one table
+            if (tabList.size() < 2) {
+                Table selecTable = tabList.get(0);
+                table = selecTable.select(colTitles);
+
+                // more than two table, but currently just up to 2 tables.
+            } else {
+                Table selecTable = tabList.get(0);
+                Table selecTable2 = tabList.get(1);
+                table = selecTable.select(selecTable2, colTitles);
+            }
+
+            // with cond
         } else {
             table = table.select(colTitles, conList);
         }

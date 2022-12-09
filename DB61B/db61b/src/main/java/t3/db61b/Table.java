@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
@@ -168,16 +169,31 @@ class Table implements Iterable<Row> {
     }
 
     /** Print my contents on the standard output. */
-    void print() {
-        for (String title : this.titles)
-            System.out.format("%-20s", title);
-        System.out.print("\n");
+    void print(Integer width) {
+        width += 1;
+        System.out.println(String.join("", Collections.nCopies(width * this.titles.length + 1, "-")));
+        for (String title : this.titles) {
+            System.out.format("%-" + width + "s", "|" + title);
+        }
+        System.out.print("|\n");
+
+        for (int i = 0; i < this.titles.length; i++) {
+            System.out.print("+" + String.join("", Collections.nCopies(width - 1, "-")));
+        }
+        System.out.print("+\n");
+
         for (Row row : this._rows) {
             for (int i = 0; i < this.columns(); i++) {
-                System.out.format("%-20s", row.get(i));
+                System.out.format("%-" + width + "s", "|" + row.get(i));
             }
-            System.out.print("\n");
+            System.out.print("|\n");
         }
+
+        System.out.println(String.join("", Collections.nCopies(width * this.titles.length + 1, "-")));
+    }
+
+    void print() {
+        this.print(15);
     }
 
     /**

@@ -206,7 +206,7 @@ class CommandInterpreter {
         String LoadName = name();
         Table LoadTable = Table.readTable(LoadName);
         _database.put(LoadName, LoadTable);
-        System.out.println("Loaded" + LoadName + ".db");
+        System.out.println("Loaded " + LoadName + ".db");
         _input.next(";");
     }
 

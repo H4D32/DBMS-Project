@@ -1,11 +1,4 @@
-// This is a SUGGESTED skeleton for a class that parses and executes database
-// statements.  Be sure to read the STRATEGY section, and ask us if you have any
-// questions about it.  You can throw this away if you want, but it is a good
-// idea to try to understand it first.  Our solution adds or changes about 50
-// lines in this skeleton.
 
-// Comments that start with "//" are intended to be removed from your
-// solutions.
 package t3.db61b;
 
 import java.io.PrintStream;
@@ -15,6 +8,7 @@ import java.util.Scanner;
 import java.util.List;
 
 import static t3.db61b.Utils.*;
+import static t3.db61b.Tokenizer.*;
 
 /** An object that reads and interprets a sequence of commands from an
  *  input source.
@@ -202,7 +196,7 @@ class CommandInterpreter {
         String LoadName = name();
         Table LoadTable = Table.readTable(LoadName);
         _database.put(LoadName, LoadTable);
-        System.out.println("Loaded"+LoadName+".db");
+        System.out.println("Loaded" + LoadName + ".db");
         _input.next(";");
     }
 
@@ -220,6 +214,7 @@ class CommandInterpreter {
     void printStatement() {
         _input.next("print");
         String s = _input.peek();
+        Table table = tableName();
         Table GetTable = _database.get(s);
         System.out.println("Contents of " + s + ":");
         GetTable.print();
@@ -240,11 +235,11 @@ class CommandInterpreter {
     Table tableDefinition() {
         Table table;
         if (_input.nextIf("(")) {
-            ArrayList<String> ColumeName = new ArrayList<String>();
+            ArrayList<String> ColumnName = new ArrayList<String>();
             while (_input.nextIf(",")){
-                ColumeName.add(columnName());
+                ColumnName.add(columnName());
             }
-            table = new Table(ColumeName);
+            table = new Table(ColumnName);
         } else {
             _input.next("as");
             table = selectClause();

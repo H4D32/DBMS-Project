@@ -1,0 +1,29 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Run DB61B from testing",
+            "type": "java",
+            "request": "launch",
+            "cwd": "C:\\Users\\12202\\github-classroom\\CSC3170-2022Fall\\project-team-3\\DB61B\\testing",// Change to your own dir
+            "mainClass": "t3.db61b.App",
+            "preLaunchTask": "build db61b to testing"
+        },
+        {
+            "name": "Run Python Tester",
+            "type": "python",
+            "request": "launch",
+            "cwd": "C:\\Users\\12202\\github-classroom\\CSC3170-2022Fall\\project-team-3\\DB61B\\testing",// Change to your own dir
+            "program": "tester.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "test2.in"
+            ],
+            "preLaunchTask": "ready for py test"
+        }
+    ]
+}

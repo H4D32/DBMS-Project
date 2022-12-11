@@ -75,7 +75,7 @@ except:
           file=sys.stderr)
     sys.exit(1)
 
-tester = Proj1_Tester(tested_program="java -ea db61b.Main",
+tester = Proj1_Tester(tested_program="java -ea t3.db61b.App",
                       report_limit=show)
 
 sys.exit(0 if tester.test_all(args) else 1)

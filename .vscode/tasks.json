@@ -1,0 +1,50 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "clear last build",
+            "type": "shell",
+            "options": {
+                "cwd": "C:\\Users\\12202\\github-classroom\\CSC3170-2022Fall\\project-team-3\\DB61B"// Change to your own dir
+            },
+            "command": [
+                "rm -force .\\testing\\t3\\db61b\\*.class"
+            ]
+        },
+        {
+            "label": "build db61b to testing",
+            "type": "shell",
+            "options": {
+                "cwd": "C:\\Users\\12202\\github-classroom\\CSC3170-2022Fall\\project-team-3\\DB61B"// Change to your own dir
+            },
+            "command": "javac .\\db61b\\src\\main\\java\\t3\\db61b\\*.java -d .\\testing",
+            "dependsOn": "clear last build"
+        },
+        {
+            "label": "clear db files",
+            "type": "shell",
+            "options": {
+                "cwd": "C:\\Users\\12202\\github-classroom\\CSC3170-2022Fall\\project-team-3\\DB61B"// Change to your own dir
+            },
+            "command": "rm -force .\\testing\\t3\\db61b\\*.db"
+        },
+        {
+            "label": "copy db files",
+            "type": "shell",
+            "options": {
+                "cwd": "C:\\Users\\12202\\github-classroom\\CSC3170-2022Fall\\project-team-3\\DB61B"// Change to your own dir
+            },
+            "command": "cp .\\testing\\*.db .\\testing\\t3\\db61b\\"
+        },
+        {
+            "label": "ready for py test",
+            "dependsOn":[
+                "build db61b to testing",
+                "clear db files",
+                "copy db files"
+            ]
+        }
+    ]
+}

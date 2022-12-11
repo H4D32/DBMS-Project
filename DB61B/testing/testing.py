@@ -347,10 +347,9 @@ class Tester:
         return " <" + self.standard_input_file(testid) + " "
 
     def _command_line(self, id):
-        return "ulimit -t {timeout}; ulimit -f {filesize}; \
-                ulimit -d {memsize}; \
-                {command} {args}" \
-             .format(command=self.tested_program,
+        # ulimit -t {timeout}; ulimit -f {filesize}; ulimit -d {memsize}; \
+        return "{command} {args}" \
+            .format(command=self.tested_program,
                      args=self.command_args(id),
                      timeout=self.time_limit, filesize=self.file_size_limit,
                      memsize=self.heap_size_limit)

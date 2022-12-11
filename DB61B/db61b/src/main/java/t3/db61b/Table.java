@@ -219,6 +219,9 @@ class Table implements Iterable<Row> {
         List<Integer> columnNum = new ArrayList<>();
         for (String columnName : columnNames) {
             columnNum.add(this.findColumn(columnName));
+            if (this.findColumn(columnName) == -1) {
+                throw error("cannot find Column \'%s\' in select operation.", columnName);
+            }
         }
         for (Row row : _rows) {
             String[] newRow = new String[columnNames.size()];

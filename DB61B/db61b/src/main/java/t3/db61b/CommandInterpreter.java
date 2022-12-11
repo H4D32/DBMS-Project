@@ -195,7 +195,8 @@ class CommandInterpreter {
         while (_input.nextIf(",")) {
             values.add(literal());
         }
-
+        if (values.size() != table.columns())
+            throw error("Number of data not match with number of columns");
         table.add(new Row(values.toArray(new String[values.size()])));
         _input.next(";");
     }
@@ -223,10 +224,7 @@ class CommandInterpreter {
     /** Parse and execute a print statement from the token stream. */
     void printStatement() {
         _input.next("print");
-        String s = _input.peek();
-        Table table = tableName();
-        Table GetTable = _database.get(s);
-        System.out.println("Contents of " + s + ":");
+        Table GetTable = tableName();
         GetTable.print();
         _input.next(";");
     }
@@ -248,9 +246,11 @@ class CommandInterpreter {
         Table table;
         if (_input.nextIf("(")) {
             ArrayList<String> ColumnName = new ArrayList<String>();
+            ColumnName.add(columnName());
             while (_input.nextIf(",")) {
                 ColumnName.add(columnName());
             }
+            _input.next(")");
             table = new Table(ColumnName);
         } else {
             _input.next("as");

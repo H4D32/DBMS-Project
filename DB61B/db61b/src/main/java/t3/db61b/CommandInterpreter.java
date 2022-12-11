@@ -207,7 +207,7 @@ class CommandInterpreter {
         String LoadName = name();
         Table LoadTable = Table.readTable(LoadName);
         _database.put(LoadName, LoadTable);
-        System.out.println("Loaded" + LoadName + ".db");
+        System.out.println("Loaded " + LoadName + ".db");
         _input.next(";");
     }
 
@@ -254,6 +254,7 @@ class CommandInterpreter {
             table = new Table(ColumnName);
         } else {
             _input.next("as");
+            _input.next("select");
             table = selectClause();
         }
         return table;
@@ -285,7 +286,6 @@ class CommandInterpreter {
             Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
             conList = conditionClause(tabArray);
         }
-        System.out.println(tabList.get(0));
 
         // without cond
         if (conList.size() == 0) {

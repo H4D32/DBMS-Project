@@ -188,8 +188,8 @@ class Table implements Iterable<Row> {
             }
             System.out.print("|\n");
         }
-
-        System.out.println(String.join("", Collections.nCopies(width * this.titles.length + 1, "-")));
+        if (this._rows.size() != 0)
+            System.out.println(String.join("", Collections.nCopies(width * this.titles.length + 1, "-")));
     }
 
     void print() {

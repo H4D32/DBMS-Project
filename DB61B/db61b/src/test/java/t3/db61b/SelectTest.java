@@ -30,6 +30,27 @@ public class SelectTest {
         }
         selected.print();
     }  
+    
+    @Test
+    public void Test_selectWithConditions() {
+        Table student = new Table(new String[] {"name", "score"});
+        student.add(new Row(new String[] {"Alex", "60"}));
+        student.add(new Row(new String[] {"Candy", "20"}));
+        student.add(new Row(new String[] {"Duke", "100"}));
+        Column col1 = new Column("score", student);
+        Column col2 = new Column("name",student);
+        Condition con1 = new Condition(col1,">","50");
+        Condition con2 = new Condition(col2,"<","Bob");
+        List<String> columnNames = new ArrayList<>();
+        columnNames.add("name");
+        columnNames.add("score");
+        List<Condition> conditions =new ArrayList<>();
+        conditions.add(con1);
+        conditions.add(con2);
+        Table selected = student.select(columnNames,conditions);
+        selected.print();
+    }
+    
     @Test
     public void selectDoubleNoCond() {
         table.add(new Row(new String[] { "1", "Alex", "Bob", "SDS" }));

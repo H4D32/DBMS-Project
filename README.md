@@ -9,7 +9,7 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 
 - [ ] **Application with Database System(s)**
 - [x] **Implementation of a Database System**
-Team3 Slides (incompleted).pdf
+
 Our presentation slide could be found here: [Team3 Slides (incompleted).pdf](Team3%20Slides%20(incompleted).pdf). (need to be added more contents and polished)
 
 ## Team Members

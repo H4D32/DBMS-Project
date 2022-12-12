@@ -13,7 +13,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -208,7 +207,7 @@ class Table implements Iterable<Row> {
             columnNum.add(this.findColumn(columnName));
         }
         for (Row row : _rows) {
-            if (test(conditions,row)){
+            if (Condition.test(conditions,row)){
                 String[] newRow = new String[columnNames.size()];
                 for (int i = 0; i < columnNames.size(); i++) {
                 newRow[i] = row.get(columnNum.get(i));

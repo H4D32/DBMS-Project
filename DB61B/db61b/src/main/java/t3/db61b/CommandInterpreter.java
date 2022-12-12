@@ -8,7 +8,6 @@ import java.util.Scanner;
 import java.util.List;
 
 import static t3.db61b.Utils.*;
-import static t3.db61b.Tokenizer.*;
 
 /**
  * An object that reads and interprets a sequence of commands from an

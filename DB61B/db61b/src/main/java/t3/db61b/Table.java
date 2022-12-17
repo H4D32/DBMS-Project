@@ -207,12 +207,12 @@ class Table implements Iterable<Row> {
             columnNum.add(this.findColumn(columnName));
         }
         for (Row row : _rows) {
-            if (Condition.test(conditions,row)){
+            if (Condition.test(conditions, row)) {
                 String[] newRow = new String[columnNames.size()];
                 for (int i = 0; i < columnNames.size(); i++) {
-                newRow[i] = row.get(columnNum.get(i));
+                    newRow[i] = row.get(columnNum.get(i));
                 }
-            result.add(new Row(newRow));
+                result.add(new Row(newRow));
             }
         }
         return result;

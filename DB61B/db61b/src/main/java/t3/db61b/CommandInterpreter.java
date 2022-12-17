@@ -273,24 +273,27 @@ class CommandInterpreter {
         List<Table> tabList = new ArrayList<>();
 
         // initialize a new table to record the selection
-        Table table = new Table(colTitles);
+        Table table = new Table(new String[] { "" });
         tabList.add(tableName());
         while (_input.nextIf(",")) {
             tabList.add(tableName());
         }
-        List<Condition> conList = new ArrayList<>();
 
         // if next tokenizer is where, check condition.
-        if (_input.nextIs("where")) {
+        if (_input.nextIf("where")) {
+            List<Condition> conList = new ArrayList<>();
             Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
             conList = conditionClause(tabArray);
-        }
-
-        // without cond
-        if (conList.size() == 0) {
-
-            // one table
             if (tabList.size() < 2) {
+                table = tabList.get(0).select(colTitles, conList);
+            } else {
+                // Placeholder: sth. like tabList.get(0).select(tabList.get(1), colTitles,
+                // conList)
+            }
+        } else {
+            // No condition: Normal selection
+            if (tabList.size() < 2) {
+                // one table
                 Table selecTable = tabList.get(0);
                 table = selecTable.select(colTitles);
 
@@ -302,9 +305,6 @@ class CommandInterpreter {
                 table = selecTable.select(selecTable2, colTitles);
             }
 
-            // with cond -need further implementation
-        } else {
-            table = table.select(colTitles, conList);
         }
         return table;
     }
@@ -352,17 +352,13 @@ class CommandInterpreter {
      */
     ArrayList<Condition> conditionClause(Table... tables) {
         ArrayList<Condition> conList = new ArrayList<Condition>();
-        if (_input.nextIf("where")) {
-            Condition condi = condition(tables);
-            conList.add(condi);
-            while (_input.nextIf("and")) {
-                Condition condi2 = condition(tables);
-                conList.add(condi2);
-            }
-            return conList;
-        } else {
-            return conList;
+        Condition condi = condition(tables);
+        conList.add(condi);
+        while (_input.nextIf("and")) {
+            Condition condi2 = condition(tables);
+            conList.add(condi2);
         }
+        return conList;
     }
 
     /**

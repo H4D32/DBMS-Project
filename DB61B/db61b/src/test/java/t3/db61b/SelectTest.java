@@ -73,4 +73,26 @@ public class SelectTest {
         }
         selected.print();
     }
+
+    @Test
+    public void selectDoubleWithCond() {
+        table.add(new Row(new String[] { "1", "Alex", "Bob", "SDS" }));
+        table.add(new Row(new String[] { "2", "Charlie", "Diana", "SSE" }));
+        table2.add(new Row(new String[] { "1", "Math", "A" }));
+        table2.add(new Row(new String[] { "1", "Phy", "B" }));
+        table2.add(new Row(new String[] { "1", "Chem", "C" }));
+        table2.add(new Row(new String[] { "2", "Math", "B+" }));
+        table2.add(new Row(new String[] { "2", "Phy", "B-" }));
+        table2.add(new Row(new String[] { "2", "Csc", "A-" }));
+        List<String> columnNames = new ArrayList<>();
+        columnNames.add("Student");
+        columnNames.add("Course");
+        columnNames.add("Grade");
+        List<Condition> conditions = new ArrayList<>();
+        Column col1 = new Column("School", table);
+        Condition con1 = new Condition(col1, "=", "SDS");
+        conditions.add(con1);
+        Table selected = table.select(table2, columnNames,conditions);
+        selected.print();
+    }
 }

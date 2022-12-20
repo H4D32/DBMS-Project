@@ -201,7 +201,6 @@ class Table implements Iterable<Row> {
      */
     Table select(List<String> columnNames, List<Condition> conditions) {
         Table result = new Table(columnNames);
-        // FILL IN
         List<Integer> columnNum = new ArrayList<>();
         for (String columnName : columnNames) {
             columnNum.add(this.findColumn(columnName));
@@ -241,7 +240,6 @@ class Table implements Iterable<Row> {
             }
             result.add(new Row(newRow));
         }
-        // result.print();
         return result;
     }
 
@@ -253,7 +251,30 @@ class Table implements Iterable<Row> {
     Table select(Table table2, List<String> columnNames,
             List<Condition> conditions) {
         Table result = new Table(columnNames);
-        // FILL IN
+        ArrayList<String> commonCols = new ArrayList<>();
+        for (int i = 0; i < this.columns(); i++) {
+            for (int j = 0; j < table2.columns(); j++) {
+                String thisCol = this.getTitle(i);
+                String col2 = table2.getTitle(j);
+                if (thisCol.equals(col2)) {
+                    commonCols.add(thisCol);
+                }
+            }
+        }
+        ArrayList<Column> common1 = namesToColumns(commonCols, this);
+        ArrayList<Column> common2 = namesToColumns(commonCols, table2);
+        Table[] tables = { this, table2 };
+        ArrayList<Column> columns = namesToColumns(columnNames, tables);
+        for (Row row1 : this) {
+            for (Row row2 : table2) {
+                if (equijoin(common1, common2, row1, row2)) {
+                    Row[] rows = { row1, row2 };
+                    if (Condition.test(conditions, rows)) {
+                        result.add(new Row(columns, rows));
+                    }
+                }
+            }
+        }
         return result;
     }
 

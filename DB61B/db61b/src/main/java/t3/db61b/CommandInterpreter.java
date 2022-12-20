@@ -287,8 +287,7 @@ class CommandInterpreter {
             if (tabList.size() < 2) {
                 table = tabList.get(0).select(colTitles, conList);
             } else {
-                // Placeholder: sth. like tabList.get(0).select(tabList.get(1), colTitles,
-                // conList)
+                table = tabList.get(0).select(tabList.get(1), colTitles, conList);
             }
         } else {
             // No condition: Normal selection

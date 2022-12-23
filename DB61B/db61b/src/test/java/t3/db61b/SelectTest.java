@@ -92,7 +92,16 @@ public class SelectTest {
         Column col1 = new Column("School", table);
         Condition con1 = new Condition(col1, "=", "SDS");
         conditions.add(con1);
-        Table selected = table.select(table2, columnNames,conditions);
+        Table selected = table.select(table2, columnNames, conditions);
         selected.print();
+    }
+
+    @Test
+    public void selectMultiTableWithoutCond() {
+        Table t1 = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\enrolled");
+        Table t2 = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\students");
+        Table t3 = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\schedule");
+        Table t4 = Table.readTable("D:\\CUHK\\csc3170\\p33\\project-team-3\\DB61B\\testing\\stuPhone");
+
     }
 }

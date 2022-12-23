@@ -5,6 +5,7 @@ import java.io.PrintStream;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
 import java.util.List;
 
 import static t3.db61b.Utils.*;
@@ -259,6 +260,22 @@ class CommandInterpreter {
         return table;
     }
 
+    Table recursiveSelect(List<Table> tabList, List<String> colTitles, List<String> colTitlesLeft, int num,
+            Table curTable) {
+        Table table = new Table(new String[] { "" });
+        Table selecTable = tabList.get(num);
+        for (int i = 0; i < colTitlesLeft.size();) {
+            // if the left column can be find in the following table add it to colTitles
+            if (selecTable.findColumn(colTitlesLeft.get(i)) != -1) {
+                colTitles.add(colTitlesLeft.remove(i));
+            } else {
+                i++;
+            }
+        }
+        table = selecTable.select(curTable, colTitles);
+        return table;
+    }
+
     /**
      * Parse and execute a select clause from the token stream, returning the
      * resulting table.
@@ -279,32 +296,51 @@ class CommandInterpreter {
             tabList.add(tableName());
         }
 
+        // Normal selection first
+        if (tabList.size() < 2) {
+            // one table
+            Table selecTable = tabList.get(0);
+            table = selecTable.select(colTitles);
+
+            // more than two table, but currently just up to 2 tables.
+            // -need further implementation(if select more than 2 tables together)
+        } else {
+            int tableNum = tabList.size();
+            Table selecTable = tabList.get(0);
+            Table selecTable2 = tabList.get(1);
+            if (tableNum > 2) {
+                List<String> colTitlesLeft = new ArrayList<String>();
+                for (int i = 0; i < colTitles.size();) {
+                    // if this column is not in first table and second table
+                    if (selecTable.findColumn(colTitles.get(i)) == -1
+                            && selecTable2.findColumn(colTitles.get(i)) == -1) {
+                        colTitlesLeft.add(colTitles.remove(i));
+                    } else {
+                        i++;
+                    }
+                }
+                table = selecTable.select(selecTable2, colTitles);
+                for (int i = 2; i < tableNum; i++) {
+                    table = recursiveSelect(tabList, colTitles, colTitlesLeft, i, table);
+                }
+            } else {
+                table = selecTable.select(selecTable2, colTitles);
+            }
+        }
+
         // if next tokenizer is where, check condition.
         if (_input.nextIf("where")) {
             List<Condition> conList = new ArrayList<>();
             Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
             conList = conditionClause(tabArray);
-            if (tabList.size() < 2) {
-                table = tabList.get(0).select(colTitles, conList);
-            } else {
-                table = tabList.get(0).select(tabList.get(1), colTitles, conList);
-            }
-        } else {
-            // No condition: Normal selection
-            if (tabList.size() < 2) {
-                // one table
-                Table selecTable = tabList.get(0);
-                table = selecTable.select(colTitles);
-
-                // more than two table, but currently just up to 2 tables.
-                // -need further implementation(if select more than 2 tables together)
-            } else {
-                Table selecTable = tabList.get(0);
-                Table selecTable2 = tabList.get(1);
-                table = selecTable.select(selecTable2, colTitles);
-            }
-
+            // if (tabList.size() < 2) {
+            // table = tabList.get(0).select(colTitles, conList);
+            // } else {
+            // table = tabList.get(0).select(tabList.get(1), colTitles, conList);
+            // }
+            table = table.select(table, colTitles, conList);
         }
+
         return table;
     }
 

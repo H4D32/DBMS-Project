@@ -302,8 +302,7 @@ class CommandInterpreter {
             Table selecTable = tabList.get(0);
             table = selecTable.select(colTitles);
 
-            // more than two table, but currently just up to 2 tables.
-            // -need further implementation(if select more than 2 tables together)
+            // more than two table.
         } else {
             int tableNum = tabList.size();
             Table selecTable = tabList.get(0);
@@ -331,14 +330,14 @@ class CommandInterpreter {
         // if next tokenizer is where, check condition.
         if (_input.nextIf("where")) {
             List<Condition> conList = new ArrayList<>();
-            Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
-            conList = conditionClause(tabArray);
+            // Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
+            conList = conditionClause(table);
             // if (tabList.size() < 2) {
-            // table = tabList.get(0).select(colTitles, conList);
+            // table = table.select(colTitles, conList);
             // } else {
-            // table = tabList.get(0).select(tabList.get(1), colTitles, conList);
+            // table = table.select(table, colTitles, conList);
             // }
-            table = table.select(table, colTitles, conList);
+            table = table.select(colTitles, conList);
         }
 
         return table;

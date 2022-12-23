@@ -64,8 +64,12 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [x] 9. Implement the Row(List<Column> columns, Row... rows) constructor.
 
-- [ ] 10. Get single-table select with conditions to work.
+- [x] 10. Get single-table select with conditions to work.
 
 - [x] 11. Work on the two-table variety of select.
+
+- [x] 12. Work on the multi table selection w/wo conditions.(optional)
+
+- [ ] 13. Work on select * (optional)
 
 <!-- TODO -->

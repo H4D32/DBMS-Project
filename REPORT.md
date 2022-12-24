@@ -36,5 +36,11 @@ Based the original file structure, we have to finish everything and do the final
 So, we introduced Maven management method to realise intermediate test. Once a class with several functions is implemented, the programmer could write a small piece of code to verify the correctness of that class.
 
 In this situation, the file structure seems a little bit different. If you are confused about that, the [structure description in README](README.md) may be helpful.
+### 2. Multi Tables Selection:
+Even though our single table and double table selection is OK, when we try to select multiple tables, we find that when the number of selected tables is greater than or equal to 3, the selection conditions sometimes become invalid, or only the header is returned without data。
 
+It seems that， rather than a bug the current version of the project is more so missing some implementation,which is lossing the support of condition for multi-table (3+) select. Originally after the Command Interpreter goes through the if-elses to find which exact kind of select it is dealing with it calls the corresponding function to handle that case. But now instead, it only uses the no condition variants to process a table with the Columns needed and then it Tries to apply conditions. This way its very normal that we cannot find conditions on non-selected columns. Since multi-table select is not included in the request of this project, we just give some suggestions about it:
+- Try to make the "Recursive Select" able to handle condition list in the input
+- Try different implementation method for multi-table such as creating a big natural joined table and then single table select with cond smthng like that ...
+- Accept that the 3+ Table select won't handle conditions, for 1-2 table select goes back to the original way it was done, and for 3 tables with no condition just throw a different error to make it clear it is unimplemented rather just bug.
 ## Contribution

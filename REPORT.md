@@ -7,7 +7,7 @@ This is a preliminary report, which includes Project Overall Description, Team M
 ## Program Design
 Since the template we used was written by Java, we have 7 important classes to together form our major function. The basic relationship amoung classes is shown below:
 
-![image](.\graphs/relationship.png)
+![image](graphs/relationship.png)
 
 For each class:
 + **Tokenizer**: Parse user commands, and interacts with database or creates conditions.

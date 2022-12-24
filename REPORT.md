@@ -26,6 +26,8 @@ In the [CommandInterpreter](DB61B/db61b/src/main/java/t3/db61b/CommandInterprete
 
 ![image](graphs/selection_clause.png)
 
+It shows the basic implementation of the selection part. Its logic is: whether there is a condition or not, create a table first. If there is a condition, perform a single table condition query directly on the basis of the output table. But our task also includes the selection of two tables and the selection of conditions. Our idea is to merge the selected columns and create a new table, and then perform single table condition query on the basis of this new table.
+
 
 ## Difficulty & Solutions
 ### 1. Intermediate Test:

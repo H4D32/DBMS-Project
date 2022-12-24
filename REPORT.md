@@ -24,7 +24,7 @@ Based on the hierarchical class structure, we built a [Checklist](README.md) for
 ## Functionality Implementation
 In the [CommandInterpreter](DB61B/db61b/src/main/java/t3/db61b/CommandInterpreter.java) part, there are several command implementation including Create,Load,Print,Store,Insert,Select and Quit/Exit. We mainly focus on the Select command since others use similar structure thus are easy to implement. The Selection Clause is shown below:
 
-![image](graphs/selection clause.png)
+[image](graphs/selection clause.png)
 
 
 ## Difficulty & Solutions

@@ -21,6 +21,16 @@ For each class:
 Based on the hierarchical class structure, we built a [Checklist](README.md) for progress management. Group members are able to focus on the implementation of different classes in parallel. For instance, the person who implement Row class do not need to pay much attention both on the detail implementation of Column and the calling method in Table.
 
 
+## File Structure
+Here we will briefly introduce the file structure of our Github repo. The Quick Access Link in [README](README.md) will be helpful to quickly access important files.
+
+1. In root directory, there are 7 files and 4 subdirectories. The files are 2 configurations files, 1 license, 3 descriptive documents (including the report), and 1 presentation slide. The subdirectories are 2 configuration directories, 1 main codes directory (DB61B), 1 graph directory (containing graphs used in markdown files).
+2. In DB61B, there are 3 important directories with key codes:
+   * "\DB61B\db61b\src\main\java\t3\db61b": Java codes of the project
+   * "\DB61B\db61b\src\test\java\t3\db61b": Intermediate test files
+   * "\DB61B\testing": Final test files
+
+
 ## Functionality Implementation
 In the [CommandInterpreter](DB61B/db61b/src/main/java/t3/db61b/CommandInterpreter.java) part, there are several command implementation including Create,Load,Print,Store,Insert,Select and Quit/Exit. We mainly focus on the Select command since others use similar structure thus are easy to implement. The Selection Clause is shown below:
 
@@ -35,7 +45,6 @@ Based the original file structure, we have to finish everything and do the final
 
 So, we introduced Maven management method to realise intermediate test. Once a class with several functions is implemented, the programmer could write a small piece of code to verify the correctness of that class.
 
-In this situation, the file structure seems a little bit different. If you are confused about that, the [structure description in README](README.md) may be helpful.
 ### 2. Multi Tables Selection:
 Even though our single table and double table selection is OK, when we try to select multiple tables, we find that when the number of selected tables is greater than or equal to 3, the selection conditions sometimes become invalid, or only the header is returned without data。
 

@@ -10,6 +10,8 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 - [ ] **Application with Database System(s)**
 - [x] **Implementation of a Database System**
 
+## Quick Access Links
+
 Our presentation slide could be found here: [Team3 Slides (incompleted).pdf](Team3%20Slides%20(incompleted).pdf). (need to be added more contents and polished)
 
 Our project report could be found here: [REPORT.md](REPORT.md).
@@ -74,5 +76,3 @@ Basically, we will use the provided template implemented by Java. The overall im
 - [x] 12. Work on the multi table selection w/wo conditions.(optional)
 
 - [ ] 13. Work on select * (optional)
-
-<!-- TODO -->

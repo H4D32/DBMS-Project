@@ -12,6 +12,9 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 
 Our presentation slide could be found here: [Team3 Slides (incompleted).pdf](Team3%20Slides%20(incompleted).pdf). (need to be added more contents and polished)
 
+Our project report could be found here: [REPORT.md](REPORT.md).
+
+
 ## Team Members
 
 Our team consists of the following members, listed in the table below (the team leader is shown in the first row, and is marked with 🚩 behind his/her name):

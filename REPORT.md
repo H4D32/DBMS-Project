@@ -44,6 +44,10 @@ It seems that， rather than a bug the current version of the project is more so
 - Try different implementation method for multi-table such as creating a big natural joined table and then single table select with cond smthng like that ...
 - Accept that the 3+ Table select won't handle conditions, for 1-2 table select goes back to the original way it was done, and for 3 tables with no condition just throw a different error to make it clear it is unimplemented rather just bug.
 ## Contribution
+<!-- change the info below to be the real case -->
+
+| Student ID | Student Name |GitHub Username |
+| ---------- | ------------ |------------------------- |
 | 120090336   | 陈德坤🚩    |@[salixc](https://github.com/salixc) |
 
 | 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)|

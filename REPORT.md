@@ -46,7 +46,7 @@ It seems that， rather than a bug the current version of the project is more so
 ## Contribution
 <!-- change the info below to be the real case -->
 
-| Student ID | Student Name |GitHub Username |
+| Student ID | Student Name |GitHub Username | Contribution |
 | ---------- | ------------ |------------------------- |----------------------------------|
 | 120090336   | 陈德坤🚩    |@[salixc](https://github.com/salixc) | |
 | 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)| |

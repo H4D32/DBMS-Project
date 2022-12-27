@@ -69,7 +69,7 @@ It seems that， rather than a bug the current version of the project is more so
 | ---------- | ------------ |------------------------- |----------------------------------|
 | 120090336   | 陈德坤🚩    |@[salixc](https://github.com/salixc) | |
 | 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)| Implement Table class except selection. Bug fix in the first overall testing. Configure Python tester. |
-| 120090675   | 黎鸣     |@[Mo9L1](https://github.com/Mo9L1) | |implement select with condition
+| 120090675   | 黎鸣     |@[Mo9L1](https://github.com/Mo9L1) | implement select with condition|
 | 119010531 |Nasr Alae-eddine|@[H4D32](https://github.com/H4D32) | Switch to Maven Project and Implement the first unit testing framework. Implement two table Variety of select with and without conditions |
 | 120010027  | 张家宇    |@[JJY-jy233](https://github.com/JJY-jy233) | |
 | 118010408   | 张昊旻  |@[118010408](https://github.com/118010408) | Implement insert, print and load; Fill in create and store; Preliminary completion of condition, condition clause and unconditional single table selection |

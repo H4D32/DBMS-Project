@@ -301,7 +301,6 @@ class CommandInterpreter {
             // one table
             Table selecTable = tabList.get(0);
             table = selecTable.select(colTitles);
-
             // more than two table.
         } else {
             int tableNum = tabList.size();
@@ -330,14 +329,17 @@ class CommandInterpreter {
         // if next tokenizer is where, check condition.
         if (_input.nextIf("where")) {
             List<Condition> conList = new ArrayList<>();
-            // Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
-            conList = conditionClause(table);
-            // if (tabList.size() < 2) {
-            // table = table.select(colTitles, conList);
-            // } else {
-            // table = table.select(table, colTitles, conList);
-            // }
-            table = table.select(colTitles, conList);
+            // tabList.add(table);
+            Table[] tabArray = tabList.toArray(new Table[tabList.size()]);
+            conList = conditionClause(tabArray);
+            if (tabList.size() < 2) {
+                table = tabList.get(0).select(colTitles, conList);
+            } else if (tabList.size() == 2) {
+                table = tabList.get(0).select(tabList.get(1), colTitles, conList);
+            } else {
+                conList = conditionClause(table);
+                table = table.select(colTitles, conList);
+            }
         }
 
         return table;
@@ -403,6 +405,13 @@ class CommandInterpreter {
         String colTitle = columnName();
         String relate = _input.next(Tokenizer.RELATION);
         Column coll = new Column(colTitle, tables);
+        // for (int i = 0; i < tables.length; i++) {
+        // // if the column is in that table
+        // if (tables[i].findColumn(colTitle) != -1) {
+        // coll = new Column(colTitle, tables[i]);
+        // }
+        // }
+
         if (_input.nextIs(Tokenizer.LITERAL)) {
             String report = literal();
             Condition condi = new Condition(coll, relate, report);

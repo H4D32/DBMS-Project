@@ -27,20 +27,28 @@ Here we will briefly introduce the file structure of our Github repo. The Quick 
 1. In root directory, there are 7 files and 4 subdirectories. The files are 2 configurations files, 1 license, 3 descriptive documents (including the report), and 1 presentation slide. The subdirectories are 2 configuration directories, 1 main codes directory (DB61B), 1 graph directory (containing graphs used in markdown files).
 2. In DB61B, there are 3 important directories with key codes:
    * "\DB61B\db61b\src\main\java\t3\db61b": Java codes of the project
-   * "\DB61B\db61b\src\test\java\t3\db61b": Intermediate test files
+   * "\DB61B\db61b\src\test\java\t3\db61b": Test files for Maven unit test
    * "\DB61B\testing": Final test files
 
 
 ## Functionality Implementation
+### CommandInterpreter
 In the [CommandInterpreter](DB61B/db61b/src/main/java/t3/db61b/CommandInterpreter.java) part, there are several command implementation including Create,Load,Print,Store,Insert,Select and Quit/Exit. We mainly focus on the Select command since others use similar structure thus are easy to implement. The Selection Clause is shown below:
 
 ![image](graphs/selection_clause.png)
 
 It shows the basic implementation of the selection part. Its logic is: whether there is a condition or not, create a table first. If there is a condition, perform a single table condition query directly on the basis of the output table. But our task also includes the selection of two tables and the selection of conditions. Our idea is to merge the selected columns and create a new table, and then perform single table condition query on the basis of this new table.
 
+### Table
+In [Table](DB61B/db61b/src/main/java/t3/db61b/Table.java) class, we have divided this class into two implementations. The first one is the base component and functions of Table class, the second part is the select related functions. In the first part, we aim at making the tables interactive and make a sort of visualization style to print the table tidily.
+
+![image](graphs/tableprint_style_sample.png)
+
+This is a sample of table print in System. It's a "parody" of MySQL display style, but giving good readability.
+
 
 ## Difficulty & Solutions
-### 1. Intermediate Test:
+### 1. Intermediate Test (Unit Tests):
 Based the original file structure, we have to finish everything and do the final test to debug. It was quite hard to find and correct mistakes from many functions.
 
 So, we introduced Maven management method to realise intermediate test. Once a class with several functions is implemented, the programmer could write a small piece of code to verify the correctness of that class.
@@ -52,14 +60,16 @@ It seems that， rather than a bug the current version of the project is more so
 - Try to make the "Recursive Select" able to handle condition list in the input
 - Try different implementation method for multi-table such as creating a big natural joined table and then single table select with cond smthng like that ...
 - Accept that the 3+ Table select won't handle conditions, for 1-2 table select goes back to the original way it was done, and for 3 tables with no condition just throw a different error to make it clear it is unimplemented rather just bug.
+
+
 ## Contribution
 <!-- change the info below to be the real case -->
 
 | Student ID | Student Name |GitHub Username | Contribution |
 | ---------- | ------------ |------------------------- |----------------------------------|
 | 120090336   | 陈德坤🚩    |@[salixc](https://github.com/salixc) | |
-| 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)| |
-| 120090675   | 黎鸣     |@[Mo9L1](https://github.com/Mo9L1) | |
+| 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)| Implement Table class except selection. Bug fix in the first overall testing. Configure Python tester. |
+| 120090675   | 黎鸣     |@[Mo9L1](https://github.com/Mo9L1) | |implement select with condition
 | 119010531 |Nasr Alae-eddine|@[H4D32](https://github.com/H4D32) | Switch to Maven Project and Implement the first unit testing framework. Implement two table Variety of select with and without conditions |
 | 120010027  | 张家宇    |@[JJY-jy233](https://github.com/JJY-jy233) | Implement single table selection; Working on optimization of selectClause function in CommandInterpreter.java; Realize multitable(more than two tables);Fix some bugs in table.java.| 
 | 118010408   | 张昊旻  |@[118010408](https://github.com/118010408) | Implement insert, print and load; Fill in create and store; Preliminary completion of condition, condition clause and unconditional single table selection |

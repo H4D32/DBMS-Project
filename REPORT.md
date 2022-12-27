@@ -32,6 +32,9 @@ Here we will briefly introduce the file structure of our Github repo. The Quick 
 
 
 ## Functionality Implementation
+### Tokenizer
+[Tokenizer](DB61B/db61b/src/main/java/t3/db61b/Tokenizer.java) class is provided by the template from DB61B. It uses regex to Tokenize the input of user.
+
 ### CommandInterpreter
 In the [CommandInterpreter](DB61B/db61b/src/main/java/t3/db61b/CommandInterpreter.java) part, there are several command implementation including Create,Load,Print,Store,Insert,Select and Quit/Exit. We mainly focus on the Select command since others use similar structure thus are easy to implement. The Selection Clause is shown below:
 
@@ -39,12 +42,35 @@ In the [CommandInterpreter](DB61B/db61b/src/main/java/t3/db61b/CommandInterprete
 
 It shows the basic implementation of the selection part. Its logic is: whether there is a condition or not, create a table first. If there is a condition, perform a single table condition query directly on the basis of the output table. But our task also includes the selection of two tables and the selection of conditions. Our idea is to merge the selected columns and create a new table, and then perform single table condition query on the basis of this new table.
 
+### Condition
+[Condition](DB61B/db61b/src/main/java/t3/db61b/Condition.java) class is a class representing Conditions inputted to system and take on the task of comparing data according to recorded conditions.
+
+This class is the dependency of condition selections
+
+### Row & Column
+In [Row](DB61B/db61b/src/main/java/t3/db61b/Row.java) and [Column](DB61B/db61b/src/main/java/t3/db61b/Column.java) parts, we implement them as a sub-structure of table. Especially for row class, it's the structure that directly stores the data. And to prevent the to be inserted data from duplication, we override the equals and hashcodes method for comparison.
+
+For Column class, it's a collection that act as a bunch of "pointers" to index the data in columns. It also stores column titles, which gives efficiency to index.
+
 ### Table
-In [Table](DB61B/db61b/src/main/java/t3/db61b/Table.java) class, we have divided this class into two implementations. The first one is the base component and functions of Table class, the second part is the select related functions. In the first part, we aim at making the tables interactive and make a sort of visualization style to print the table tidily.
+In [Table](DB61B/db61b/src/main/java/t3/db61b/Table.java) class, we have divided this class into two implementations. The first one is the base component and functions of Table class, the second part is the select related functions.
+
+In Table print method, we aim at making the tables interactive and make a sort of visualization style to print the table tidily.
 
 ![image](graphs/tableprint_style_sample.png)
 
 This is a sample of table print in System. It's a "parody" of MySQL display style, but giving good readability.
+
+In the first part we use Row class as the direct sub-struct. Base on this design we implemented C/R operations.
+
+In the second part, we inplement following select function:
++ **Simple select**: only locates target columns in one table
++ **Multiple table simple select**: only locates target columns in multiple tables
++ **Condition select**: locates target columns fitting the conditions in one table
++ **Multiple table condition select**: locates target columns fitting the conditions in multiple tables
+
+### Database
+[Database](DB61B/db61b/src/main/java/t3/db61b/Database.java) class is a collection of tables. It indexes all table loaded or created in current session with their names. This class is mainly used to locate existed tables when running other methods.
 
 
 ## Difficulty & Solutions
@@ -68,7 +94,7 @@ It seems that， rather than a bug the current version of the project is more so
 | Student ID | Student Name |GitHub Username | Contribution |
 | ---------- | ------------ |------------------------- |----------------------------------|
 | 120090336   | 陈德坤🚩    |@[salixc](https://github.com/salixc) | |
-| 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)| Implement Table class except selection. Bug fix in the first overall testing. Configure Python tester. |
+| 120090747   | 陈清源    |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)| Implement Table class except selection. Bug fix in the first overall testing, concerning Table, CommandIntepreter classes. Configure VSCode settings together with Python tester. |
 | 120090675   | 黎鸣     |@[Mo9L1](https://github.com/Mo9L1) | implement select with condition|
 | 119010531 |Nasr Alae-eddine|@[H4D32](https://github.com/H4D32) | Switch to Maven Project and Implement the first unit testing framework. Implement two table Variety of select with and without conditions |
 | 120010027  | 张家宇    |@[JJY-jy233](https://github.com/JJY-jy233) | Implement single table selection; Working on optimization of selectClause function in CommandInterpreter.java; Realize multitable(more than two tables);Fix some bugs in table.java.| 

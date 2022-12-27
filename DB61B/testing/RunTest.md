@@ -16,7 +16,7 @@ You could change the test inputs and outputs in launch.json > configurations > "
 
 To change that just add or replace arguments indicating the filename of .in and .out files
 
-After that remenber to put .in and .out files into repo/DB61B/testing
+After that remember to put .in and .out files into repo/DB61B/testing
 
 ## Run
 

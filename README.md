@@ -16,6 +16,8 @@ Our presentation slide could be found here: [Team3 Slides (incompleted).pdf](Tea
 
 Our project report could be found here: [REPORT.md](REPORT.md).
 
+How to run with VSCode configuration to test could be found here: [RunTest.md](DB61B/testing/RunTest.md).
+
 
 ## Team Members
 

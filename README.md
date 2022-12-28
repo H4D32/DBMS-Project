@@ -12,15 +12,15 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 
 ## Quick Access Links
 
-Our presentation video could be found here: [Team3 Video]().
+- Our presentation video could be found here: [Team3 Video](https://1drv.ms/v/s!AihRQ4n1D70ahSu2nv3B1KzIYdc8?e=VBe2Ba).
 
-Our presentation slide could be found here: [Team3 Slide](https://1drv.ms/b/s!AihRQ4n1D70ahSqGNWhSwrnYSDSP?e=8g7QyR). 
+- Our presentation slide could be found here: [Team3 Slide](https://1drv.ms/b/s!AihRQ4n1D70ahSqGNWhSwrnYSDSP?e=8g7QyR). 
 
-Our project report could be found here: [REPORT.md](REPORT.md).
+- Our project report could be found here: [REPORT.md](REPORT.md).
 
-How to run with VSCode configuration to test could be found here: [RunTest.md](DB61B/testing/RunTest.md).
+- How to run with VSCode configuration to test could be found here: [RunTest.md](DB61B/testing/RunTest.md).
 
-Our main java codes could be found here: [Source code](DB61B/db61b/src/main/java/t3/db61b).
+- Our main java codes could be found here: [Source code](DB61B/db61b/src/main/java/t3/db61b).
 
 
 ## Team Members

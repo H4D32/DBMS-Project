@@ -12,11 +12,15 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 
 ## Quick Access Links
 
-Our presentation slide could be found here: [Team3 Slides (incompleted).pdf](Team3%20Slides%20(incompleted).pdf). (need to be added more contents and polished)
+Our presentation video could be found here: [Team3 Video]().
+
+Our presentation slide could be found here: [Team3 Slide](https://1drv.ms/b/s!AihRQ4n1D70ahSqGNWhSwrnYSDSP?e=8g7QyR). 
 
 Our project report could be found here: [REPORT.md](REPORT.md).
 
 How to run with VSCode configuration to test could be found here: [RunTest.md](DB61B/testing/RunTest.md).
+
+Our main java codes could be found here: [Source code](DB61B/db61b/src/main/java/t3/db61b).
 
 
 ## Team Members
@@ -77,4 +81,3 @@ Basically, we will use the provided template implemented by Java. The overall im
 
 - [x] 12. Work on the multi table selection w/wo conditions.(optional)
 
-- [ ] 13. Work on select * (optional)

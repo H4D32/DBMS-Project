@@ -1,5 +1,4 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-c66648af7eb3fe8bc4f294546bfd86ef473780cde1dea487d3c4ff354943c9ae.svg)](https://classroom.github.com/online_ide?assignment_repo_id=9434409&assignment_repo_type=AssignmentRepo)
-# CSC3170 Course Project
+# DBMS Course Project
 
 ## Project Overall Description
 
@@ -10,11 +9,7 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 - [ ] **Application with Database System(s)**
 - [x] **Implementation of a Database System**
 
-## Quick Access Links
-
-- Our presentation video could be found here: [Team3 Video](https://1drv.ms/v/s!AihRQ4n1D70ahSu2nv3B1KzIYdc8?e=VBe2Ba).
-
-- Our presentation slide could be found here: [Team3 Slide](https://1drv.ms/b/s!AihRQ4n1D70ahSqGNWhSwrnYSDSP?e=8g7QyR). 
+# Please refer to the [report](REPORT.md) !!!
 
 - Our project report could be found here: [REPORT.md](REPORT.md).
 
@@ -25,29 +20,18 @@ This is our implementation for the course project of CSC3170, 2022 Fall, CUHK(SZ
 
 ## Team Members
 
-Our team consists of the following members, listed in the table below (the team leader is shown in the first row, and is marked with 🚩 behind his/her name):
+Our team consists of the following members, listed in the table below:
 
 <!-- change the info below to be the real case -->
 
 | Student ID | Student Name | GitHub Account (in Email) | GitHub Username |
 | ---------- | ------------ | ------------------------- | ------------------------- |
-| 120090336   | 陈德坤🚩    | 1143863630@qq.com<br>120090336@link.cuhk.edu.cn | @[salixc](https://github.com/salixc) |
+| 120090336   | 陈德坤   | 1143863630@qq.com<br>120090336@link.cuhk.edu.cn | @[salixc](https://github.com/salixc) |
 | 120090747   | 陈清源    | christoph.chen@foxmail.com<br>120090747@link.cuhk.edu.cn   |@[Christoph-UGameGerm](https://github.com/Christoph-UGameGerm)|
 | 120090675   | 黎鸣     | 120090675@link.cuhk.edu.cn     | @[Mo9L1](https://github.com/Mo9L1) |
 | 119010531 |Nasr Alae-eddine| alaeeddinenasr@gmail.com<br>119010531@link.cuhk.edu.cn| @[H4D32](https://github.com/H4D32) |
 | 120010027  | 张家宇    | 120010027@link.cuhk.edu.cn     | @[JJY-jy233](https://github.com/JJY-jy233) |
 | 118010408   | 张昊旻  | 118010408@link.cuhk.edu.cn     | @[118010408](https://github.com/118010408) |
-
-## Project Specification
-
-<!-- You should remove the terms/sentence that is not necessary considering your option/branch/difficulty choice -->
-
-After thorough discussion, our team made the choice and the specification information is listed below:
-
-- Our option choice is: **Option 3**
-
-
-<!-- As for Option 2, our topic background specification can be found in [background-specification.md](background-specification.md). -->
 
 ## Project Abstract
 
